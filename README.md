@@ -1,2 +1,2 @@
-# cyberactive
-A front-end to STIX models
+# Cyber-ActiVE
+A front-end to STIX models.
