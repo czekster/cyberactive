@@ -1,0 +1,2071 @@
+{ 
+   "STIX Domain Objects": [
+     {
+         "type": "attack-pattern",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_axjijf603msy",
+         "description": "Attack Patterns are a type of TTP that describe ways that adversaries attempt to compromise targets.<br/>Attack Patterns are used to help categorize attacks, generalize specific attacks to the patterns that they follow, and provide detailed information about how attacks are performed. An example of an attack pattern is 'spear phishing': a common type of attack where an attacker sends a carefully crafted e-mail message to a party with the intent of getting them to click a link or open an attachment to deliver malware.<br/>Attack Patterns can also be more specific; spear phishing as practiced by a particular threat actor (e.g., they might generally say that the target won a contest) can also be an Attack Pattern.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "aliases": [ "optional", "list:string" ],
+              "kill_chain_phases": [ "optional", "list:identifier:kill-chain-phase" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "delivers": "malware",
+              "targets": [ "identity", "location", "vulnerability" ],
+              "uses": [ "malware", "tool" ]
+           }
+     },
+     {
+         "type": "campaign",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_pcpvfz4ik6d6",
+         "description": "A Campaign is a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets. Campaigns usually have well defined objectives and may be part of an Intrusion Set.<br/>Campaigns are often attributed to an intrusion set and threat actors. The threat actors may reuse known infrastructure from the intrusion set or may set up new infrastructure specific for conducting that campaign.<br/>Campaigns can be characterized by their objectives and the incidents they cause, people or resources they target, and the resources (infrastructure, intelligence, Malware, Tools, etc.) they use.<br/>For example, a Campaign could be used to describe a crime syndicate's attack using a specific variant of malware and new C2 servers against the executives of ACME Bank during the summer of 2016 in order to gain secret information about an upcoming merger with another bank.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "aliases": [ "optional", "list:string" ],
+              "first-seen": [ "optional", "timestamp" ],
+              "last-seen": [ "optional", "timestamp" ],
+              "objective": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "attributed-to": [ "intrusion-set", "threat-actor" ],
+              "compromises": "infrastructure",
+              "originates-from": "location",
+              "targets": [ "identity", "location", "vulnerability" ],
+              "uses": [ "attack-pattern", "infrastructure", "malware", "tool" ]
+           }
+     },
+     {
+         "type": "course-of-action",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_a925mpw39txn",
+         "description": "A Course of Action is an action taken either to prevent an attack or to respond to an attack that is in progress. It may describe technical, automatable responses (applying patches, reconfiguring firewalls) but can also describe higher level actions like employee training or policy changes.<br/>For example, a course of action to mitigate a vulnerability could describe applying the patch that fixes it.<br/>The Course of Action SDO contains a textual description of the action; a reserved action property also serves as a placeholder for future inclusion of machine automatable courses of action.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "action": [ "reserved", "RESERVED" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "investigates": "indicator",
+              "mitigates": [ "attack-pattern", "indicator", "malware", "tool", "vulnerability" ],
+              "remediates": [ "malware", "vulnerability" ]
+           }
+     },
+     {
+         "type": "grouping",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_t56pn7elv6u7",
+         "description": "A Grouping object explicitly asserts that the referenced STIX Objects have a shared context, unlike a STIX Bundle (which explicitly conveys no context). A Grouping object should not be confused with an intelligence product, which should be conveyed via a STIX Report.<br/>A STIX Grouping object might represent a set of data that, in time, given sufficient analysis, would mature to convey an incident or threat report as a STIX Report object. For example, a Grouping could be used to characterize an ongoing investigation into a security event or incident.<br/>A Grouping object could also be used to assert that the referenced STIX Objects are related to an ongoing analysis process, such as when a threat analyst is collaborating with others in their trust community to examine a series of Campaigns and Indicators. The Grouping SDO contains a list of references to SDOs, SCOs, SROs, and SMOs, along with an explicit statement of the context shared by the content, a textual description, and the name of the grouping.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "optional", "string" ],
+              "description": [ "optional", "string" ],
+              "context": [ "required", "open-vocab:grouping-context-ov" ],
+              "object_refs": [ "required", "list:identifier" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "object_refs": "list:identifier:STIX-SDO-SCO"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": ""
+           }
+     },
+     {
+         "type": "identity",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_wh296fiwpklp",
+         "description": "Identities can represent actual individuals, organizations, or groups (e.g., ACME, Inc.) as well as classes of individuals, organizations, systems or groups (e.g., the finance sector).<br/>The Identity SDO can capture basic identifying information, contact information, and the sectors that the Identity belongs to. Identity is used in STIX to represent, among other things, targets of attacks, information sources, object creators, and threat actor identities.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "roles": [ "optional", "list:string" ],
+              "identity_class": [ "optional", "open-vocab:identity-class-ov" ],
+              "sectors": [ "optional", "list:open-vocab:industry-sector-ov" ],
+              "contact-information": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "located-at": "location"
+           }
+     },
+     {
+         "type": "incident",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_sczfhw64pjxt",
+         "description": "<b>Note: The Incident object in STIX 2.1 is a stub. It is included to support basic use cases but does not contain properties to represent metadata about incidents. Future STIX 2 releases will expand it to include these capabilities.<br/>It is suggested that it is used as an extension point for an Incident object defined using the extension facility described in section 7.3.</b>",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": ""
+           }
+     },
+     {
+         "type": "indicator",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v",
+         "description": "Indicators contain a pattern that can be used to detect suspicious or malicious cyber activity. For example, an Indicator may be used to represent a set of malicious domains and use the STIX Patterning Language (see section 9) to specify these domains.<br/>The Indicator SDO contains a simple textual description, the Kill Chain Phases that it detects behavior in, a time window for when the Indicator is valid or useful, and a required pattern property to capture a structured detection pattern. Conforming STIX implementations <b>MUST</b> support the STIX Patterning Language as defined in section 9.<br/>Relationships from the Indicator can describe the malicious or suspicious behavior that it directly detects (Malware, Tool, and Attack Pattern). In addition, it may also imply the presence of a Campaigns, Intrusion Sets, and Threat Actors, etc.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "optional", "string" ],
+              "description": [ "optional", "string" ],
+              "indicator_types": [ "optional", "list:open-vocab:indicator-type-ov" ],
+              "pattern": [ "required", "string" ],
+              "pattern_type": [ "required", "list:open-vocab:pattern-type-ov" ],
+              "pattern_version": [ "optional", "string" ],
+              "valid_from": [ "required", "timestamp" ],
+              "valid_until": [ "optional", "timestamp" ],
+              "kill_chain_phases": [ "optional", "list:identifier:kill-chain-phase" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "indicates": [ "attack-pattern", "campaign", "infrastructure", "intrusion-set", "malware", "threat-actor", "tool" ],
+              "based-on": "observed-data"
+           }
+     },
+     {
+         "type": "infrastructure",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_jo3k1o6lr9",
+         "description": "The Infrastructure SDO represents a type of TTP and describes any systems, software services and any associated physical or virtual resources intended to support some purpose (e.g., C2 servers used as part of an attack, device or server that are part of defense, database servers targeted by an attack, etc.). While elements of an attack can be represented by other SDOs or SCOs, the Infrastructure SDO represents a named group of related data that constitutes the infrastructure.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "infrastructure_types": [ "optional", "list:open-vocab:infrastructure-type-ov" ],
+              "aliases": [ "optional", "list:string" ],
+              "kill_chain_phases": [ "optional", "list:identifier:kill-chain-phase" ],
+              "first_seen": [ "optional", "timestamp" ],
+              "last_seen": [ "optional", "timestamp" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "communicates-with": [ "infrastructure", "ipv4-addr", "ipv6-addr", "domain-name", "url" ],
+              "consists-of": [ "infrastructure", "observed-data", "STIX-SCO" ],
+              "controls": [ "infrastructure", "malware" ],
+              "delivers": "malware",
+              "has": "vulnerability",
+              "hosts": [ "tool", "malware" ],
+              "located-at": "location",
+              "uses": "infrastructure"
+           }
+     },
+     {
+         "type": "intrusion-set",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_5ol9xlbbnrdn",
+         "description": "An Intrusion Set is a grouped set of adversarial behaviors and resources with common properties that is believed to be orchestrated by a single organization. An Intrusion Set may capture multiple Campaigns or other activities that are all tied together by shared attributes indicating a commonly known or unknown Threat Actor. New activity can be attributed to an Intrusion Set even if the Threat Actors behind the attack are not known. Threat Actors can move from supporting one Intrusion Set to supporting another, or they may support multiple Intrusion Sets.<br/>Where a Campaign is a set of attacks over a period of time against a specific set of targets to achieve some objective, an Intrusion Set is the entire attack package and may be used over a very long period of time in multiple Campaigns to achieve potentially multiple purposes.<br/>While sometimes an Intrusion Set is not active, or changes focus, it is usually difficult to know if it has truly disappeared or ended. Analysts may have varying level of fidelity on attributing an Intrusion Set back to Threat Actors and may be able to only attribute it back to a nation state or perhaps back to an organization within that nation state.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "aliases": [ "optional", "list:string" ],
+              "first_seen": [ "optional", "timestamp" ],
+              "last_seen": [ "optional", "timestamp" ],
+              "goals": [ "optional", "list:string" ],
+              "resource-level": [ "optional", "open-vocab:attack-resource-level-ov" ],
+              "primary_motivation": [ "optional", "open-vocab:attack-motivation-ov" ],
+              "secondary_motivations": [ "optional", "open-vocab:attack-motivation-ov" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "attributed-to": "threat-actor",
+              "compromises": "infrastructure",
+              "hosts": "infrastructure",
+              "owns": "infrastructure",
+              "originates-from": "location",
+              "targets": [ "identity", "location", "vulnerability" ],
+              "uses": [ "attack-pattern", "infrastructure", "malware", "tool" ]
+           }
+     },
+     {
+         "type": "location",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_th8nitr8jb4k",
+         "description": "A Location represents a geographic location. The location may be described as any, some or all of the following: region (e.g., North America), civic address (e.g. New York, US), latitude and longitude.<br/>Locations are primarily used to give context to other SDOs. For example, a Location could be used in a relationship to describe that the Bourgeois Swallow intrusion set originates from Eastern Europe.<br/>The Location SDO can be related to an Identity or Intrusion Set to indicate that the identity or intrusion set is located in that location. It can also be related from a malware or attack pattern to indicate that they target victims in that location. The Location object describes geographic areas, not governments, even in cases where that area might have a government. For example, a Location representing the United States describes the United States as a geographic area, not the federal government of the United States.<br/>At least one of the following properties/sets of properties <b>MUST</b> be provided: a) region; b) country; c) latitude and longitude;<br/>When a combination of properties is provided (e.g. a region and a latitude and longitude) the more precise properties are what the location describes. In other words, if a location contains both a region of northern-america and a country of us, then the location describes the United States, not all of North America. In cases where a latitude and longitude are specified without a precision, the location describes the most precise other value.<br/>If precision is specified, then the datum for latitude and longitude <b>MUST</b> be WGS 84 [WGS84]. Organizations specifying a designated location using latitude and longitude <b>SHOULD</b> specify the precision which is appropriate for the scope of the location being identified. The scope is defined by the boundary as outlined by the precision around the coordinates.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "optional", "string" ],
+              "description": [ "optional", "string" ],
+              "latitude": [ "optional", "float" ],
+              "longitude": [ "optional", "float" ],
+              "precision": [ "optional", "float" ],
+              "region": [ "optional", "open-vocab:region-ov" ],
+              "country": [ "optional", "string" ],
+              "administrative_area": [ "optional", "string" ],
+              "city": [ "optional", "string" ],
+              "street_address": [ "optional", "string" ],
+              "postal_code": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": ""
+           }
+     },
+     {
+         "type": "malware",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_s5l7katgbp09",
+         "description": "Malware is a type of TTP that represents malicious code. It generally refers to a program that is inserted into a system, usually covertly. The intent is to compromise the confidentiality, integrity, or availability of the victim's data, applications, or operating system (OS) or otherwise annoy or disrupt the victim.<br/>The Malware SDO characterizes, identifies, and categorizes malware instances and families from data that may be derived from analysis. This SDO captures detailed information about how the malware works and what it does. This SDO captures contextual data relevant to sharing Malware data without requiring the full analysis provided by the Malware Analysis SDO.<br/>The Indicator SDO provides intelligence producers with the ability to define, using the STIX Pattern Grammar in a standard way to identify and detect behaviors associated with malicious activities. Although the Malware SDO provides vital intelligence on a specific instance or malware family, it does not provide a standard grammar that the Indicator SDO provides to identify those properties in security detection systems designed to process the STIX Pattern grammar. We strongly encourage the use of STIX Indicators for the detection of actual malware, due to its use of the STIX Patterning language and the clear semantics that it provides.<br/>To minimize the risk of a consumer compromising their system in parsing malware samples, producers <b>SHOULD</b> consider sharing defanged content (archive and password-protected samples) instead of raw, base64-encoded malware samples.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "optional", "string" ],
+              "description": [ "optional", "string" ],
+              "malware_types": [ "optional", "list:open-vocab:malware-type-ov" ],
+              "is_family": [ "required", "boolean" ],
+              "aliases": [ "optional", "list:string" ],
+              "kill-chain-phases": [ "optional", "list:identifier:kill-chain-phase" ],
+              "first_seen": [ "optional", "timestamp" ],
+              "last_seen": [ "optional", "timestamp" ],
+              "operating_system_refs": [ "optional", "list:identifier:SCO:software" ],
+              "architecture_execution_envs": [ "optional", "list:open-vocab:processor-architecture-ov" ],
+              "implementation_languages": [ "optional", "list:open-vocab:implementation-language-ov" ],
+              "capabilities": [ "optional", "list:open-vocab:malware-capabilities-ov" ],
+              "sample_refs": [ "optional", "list:identifier:SCO:file,artifact" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "sample_refs": [ "list:identifier:file", "list:identifier:artifact" ]
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "authored-by": [ "threat-actor", "intrusion-set" ],
+              "beacons-to": "infrastructure",
+              "exfiltrates-to": "infrastructure",
+              "communicates-with": [ "ipv4-addr", "ipv6-addr", "domain-name", "url" ],
+              "controls": "malware",
+              "downloads": [ "malware", "tool", "file" ],
+              "drops": [ "malware", "tool", "file" ],
+              "exploits": "vulnerability",
+              "originates-from": "location",
+              "targets": [ "identity", "infrastructure", "location", "vulnerability" ],
+              "uses": [ "attack-pattern", "infrastructure", "malware", "tool" ],
+              "variant-of": "malware"
+           }
+     },
+     {
+         "type": "malware-analysis",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_6hdrixb3ua4j",
+         "description": "Malware Analysis captures the metadata and results of a particular static or dynamic analysis performed on a malware instance or family. One of result or analysis_sco_refs properties <b>MUST</b> be provided.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "product": [ "required", "string" ],
+              "version": [ "optional", "string" ],
+              "host_vm_ref": [ "optional", "identifier:SCO:software" ],
+              "operating_system_ref": [ "optional", "identifier:SCO:software" ],
+              "installed_software_refs": [ "optional", "list:identifier:SCO:software" ],
+              "configuration_version": [ "optional", "string" ],
+              "modules": [ "optional", "list:string" ],
+              "analysis_engine_version": [ "optional", "string" ],
+              "analysis_definition_version": [ "optional", "string" ],
+              "submitted": [ "optional", "timestamp" ],
+              "analysis_started": [ "optional", "timestamp" ],
+              "analysis_ended": [ "optional", "timestamp" ],
+              "result_name": [ "optional", "string" ],
+              "result": [ "optional", "open-vocab:malware-result-ov" ],
+              "analysis_sco_refs": [ "optional", "list:identifier:STIX-SCO" ],
+              "sample_ref": [ "optional", "identifier:STIX-SCO" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "host_vm_ref": "identifier:SCO:software",
+              "operating_system_ref": "identifier:SCO:software",
+              "installed_software_refs": "list:identifier:SCO:software",
+              "analysis_sco_refs": "list:identifier:STIX-SCO",
+              "sample_ref": [ "identifier:file", "identifier:network-traffic", "identifier:artifact" ]
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "characterizes": "malware",
+              "analysis-of": "malware",
+              "static-analysis-of": "malware",
+              "dynamic-analysis-of": "malware"
+           }
+     },
+     {
+         "type": "note",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_gudodcg1sbb9",
+         "description": "A Note is intended to convey informative text to provide further context and/or to provide additional analysis not contained in the STIX Objects, Marking Definition objects, or Language Content objects which the Note relates to. Notes can be created by anyone (not just the original object creator).<br/>For example, an analyst may add a Note to a Campaign object created by another organization indicating that they've seen posts related to that Campaign on a hacker forum. <br/>Because Notes are typically (though not always) created by human analysts and are comprised of human-oriented text, they contain an additional property to capture the analyst(s) that created the Note. This is distinct from the created_by_ref property, which is meant to capture the organization that created the object.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "abstract": [ "optional", "string" ],
+              "content": [ "required", "string" ],
+              "authors": [ "optional", "list:string" ],
+              "object_refs": [ "required", "list:identifier:STIX-SDO-SCO" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "object_refs": "list:identifier:STIX-SDO-SCO"
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "observed-data",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_p49j1fwoxldc",
+         "description": "Observed Data conveys information about cyber security related entities such as files, systems, and networks using the STIX Cyber-observable Objects (SCOs). For example, Observed Data can capture information about an IP address, a network connection, a file, or a registry key. Observed Data is not an intelligence assertion, it is simply the raw information without any context for what it means.<br/>Observed Data can capture that a piece of information was seen one or more times. Meaning, it can capture both a single observation of a single entity (file, network connection) as well as the aggregation of multiple observations of an entity. When the number_observed property is 1 the Observed Data represents a single entity. When the number_observed property is greater than 1, the Observed Data represents several instances of an entity potentially collected over a period of time. If a time window is known, that can be captured using the first_observed and last_observed properties. When used to collect aggregate data, it is likely that some properties in the SCO (e.g., timestamp properties) will be omitted because they would differ for each of the individual observations.<br/>Observed Data may be used by itself (without relationships) to convey raw data collected from any source including analyst reports, sandboxes, and network and host-based detection tools. An intelligence producer conveying Observed Data <b>SHOULD</b> include as much context (e.g. SCOs) as possible that supports the use of the observed data set in systems expecting to utilize the Observed Data for improved security. This includes all SCOs that matched on an Indicator pattern and are represented in the collected observed event (or events) being conveyed in the Observed Data object. For example, a firewall could emit a single Observed Data instance containing a single Network Traffic object for each connection it sees. The firewall could also aggregate data and instead send out an Observed Data instance every ten minutes with an IP address and an appropriate number_observed value to indicate the number of times that IP address was observed in that window. A sandbox could emit an Observed Data instance containing a file hash that it discovered.<br/>Observed Data may also be related to other SDOs to represent raw data that is relevant to those objects. For example, the Sighting Relationship object, can relate an Indicator, Malware, or other SDO to a specific Observed Data to represent the raw information that led to the creation of the Sighting (e.g., what was actually seen that suggested that a particular instance of malware was active).<br/>To support backwards compatibility, related SCOs can still be specified using the objects properties, Either the objects property or the object_refs property <b>MUST</b> be provided, but both <b>MUST NOT</b> be present at the same time.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "first_observed": [ "required", "timestamp" ],
+              "last_observed": [ "required", "timestamp" ],
+              "number_observed": [ "required", "integer" ],
+              "objects": [ "optional - deprecated", "identifier:observable-container" ],
+              "object_refs ": [ "optional", "list:identifier:STIX-SCO-SRO" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "object_refs": "list:identifier:STIX-SCO-SRO"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": ""
+           }
+     },
+     {
+         "type": "opinion",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ht1vtzfbtzda",
+         "description": "An Opinion is an assessment of the correctness of the information in a STIX Object produced by a different entity. The primary property is the opinion property, which captures the level of agreement or disagreement using a fixed scale. That fixed scale also supports a numeric mapping to allow for consistent statistical operations across opinions.<br/>For example, an analyst from a consuming organization might say that they 'strongly disagree' with a Campaign object and provide an explanation about why. In a more automated workflow, a SOC operator might give an Indicator 'one star' in their TIP (expressing 'strongly disagree') because it is considered to be a false positive within their environment. Opinions are subjective, and the specification does not address how best to interpret them. Sharing communities are encouraged to provide clear guidelines to their constituents regarding best practice for the use of Opinion objects within the community.<br/>Because Opinions are typically (though not always) created by human analysts and are comprised of human-oriented text, they contain an additional property to capture the analyst(s) that created the Opinion. This is distinct from the created_by_ref property, which is meant to capture the organization that created the object.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "explanation": [ "optional", "string" ],
+              "authors": [ "optional", "list:string" ],
+              "opinion": [ "required", "enum:opinion-enum" ],
+              "object_refs": [ "required", "list:identifier:STIX-SDO-SCO" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "object_refs": "list:identifier:STIX-SDO-SCO"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": ""
+           }
+     },
+     {
+         "type": "report",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_n8bjzg1ysgdq",
+         "description": "Reports are collections of threat intelligence focused on one or more topics, such as a description of a threat actor, malware, or attack technique, including context and related details. They are used to group related threat intelligence together so that it can be published as a comprehensive cyber threat story.<br/>The Report SDO contains a list of references to STIX Objects (the CTI objects included in the report) along with a textual description and the name of the report.<br/>For example, a threat report produced by ACME Defense Corp. discussing the Glass Gazelle campaign should be represented using Report. The Report itself would contain the narrative of the report while the Campaign SDO and any related SDOs (e.g., Indicators for the Campaign, Malware it uses, and the associated Relationships) would be referenced in the report contents.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "report_types": [ "optional", "list:open-vocab:report-type-ov" ],
+              "published ": [ "required", "timestamp" ],
+              "object_refs  ": [ "required", "list:identifier:STIX-SDO-SCO" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "object_refs": "list:identifier:STIX-SDO-SCO"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": ""
+           }
+     },
+     {
+         "type": "threat-actor",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_k017w16zutw",
+         "description": "Threat Actors are actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time.<br/>Threat Actors leverage their resources, and possibly the resources of an Intrusion Set, to conduct attacks and run Campaigns against targets.<br/>Threat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "threat_actor_types": [ "optional", "list:open-vocab:threat-actor-type-ov" ],
+              "aliases": [ "optional", "list:string" ],
+              "first_seen": [ "optional", "timestamp" ],
+              "last_seen": [ "optional", "timestamp" ],
+              "roles": [ "optional", "list:open-vocab:threat-actor-role-ov" ],
+              "goals": [ "optional", "list:string" ],
+              "sophistication": [ "optional", "open-vocab:threat-actor-sophistication-ov" ],
+              "resource_level": [ "optional", "open-vocab:attack-resource-level-ov" ],
+              "primary_motivation": [ "optional", "open-vocab:attack-motivation-ov" ],
+              "secondary_motivations": [ "optional", "list:open-vocab:attack-motivation-ov" ],
+              "personal_motivations": [ "optional", "list:open-vocab:attack-motivation-ov" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "attributed-to": "identity",
+              "compromises": "infrastructure",
+              "hosts": "infrastructure",
+              "owns": "infrastructure",
+              "impersonates": "identity",
+              "located-at": "location",
+              "targets": [ "identity", "location", "vulnerability" ],
+              "uses": [ "attack-pattern", "infrastructure", "malware", "tool" ]
+           }
+     },
+     {
+         "type": "tool",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_z4voa9ndw8v",
+         "description": "Tools are legitimate software that can be used by threat actors to perform attacks. Knowing how and when threat actors use such tools can be important for understanding how campaigns are executed. Unlike malware, these tools or software packages are often found on a system and have legitimate purposes for power users, system administrators, network administrators, or even normal users. Remote access tools (e.g., RDP) and network scanning tools (e.g., Nmap) are examples of Tools that may be used by a Threat Actor during an attack.<br/>The Tool SDO characterizes the properties of these software tools and can be used as a basis for making an assertion about how a Threat Actor uses them during an attack. It contains properties to name and describe the tool, a list of Kill Chain Phases the tool can be used to carry out, and the version of the tool.<br/>This SDO <b>MUST NOT</b> be used to characterize malware. Further, Tool <b>MUST NOT</b> be used to characterize tools used as part of a course of action in response to an attack.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "tool_types": [ "optional", "list:open-vocab:tool-type-ov" ],
+              "aliases": [ "optional", "list:string" ],
+              "kill_chain_phases": [ "optional", "list:identifier:kill-chain-phase" ],
+              "tool_version": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": "",
+              "delivers": "malware",
+              "drops": "malware",
+              "has": "vulnerability",
+              "targets": [ "identity", "infrastructure", "location", "vulnerability" ],
+              "uses": "infrastructure"
+           }
+     },
+     {
+         "type": "vulnerability",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_q5ytzmajn6re",
+         "description": "A Vulnerability is a weakness or defect in the requirements, designs, or implementations of the computational logic (e.g., code) found in software and some hardware components (e.g., firmware) that can be directly exploited to negatively impact the confidentiality, integrity, or availability of that system.<br/>CVE is a list of information security vulnerabilities and exposures that provides common names for publicly known problems [CVE]. For example, if a piece of malware exploits CVE-2015-12345, a Malware object could be linked to a Vulnerability object that references CVE-2015-12345.<br/>The Vulnerability SDO is primarily used to link to external definitions of vulnerabilities or to describe 0-day vulnerabilities that do not yet have an external definition. Typically, other SDOs assert relationships to Vulnerability objects when a specific vulnerability is targeted and exploited as part of malicious cyber activity. As such, Vulnerability objects can be used as a linkage to the asset management and compliance process.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "name": [ "required", "string" ],
+              "description": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+              "duplicate-of": "",
+              "derived-from": "",
+              "related-to": ""
+           }
+     }
+   ],
+   "STIX Relationship Objects": [
+     {
+         "type": "relationship",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_e2e1szrqfoan",
+         "description": "The Relationship object is used to link together two SDOs or SCOs in order to describe how they are related to each other. If SDOs and SCOs are considered 'nodes' or 'vertices' in the graph, the Relationship Objects (SROs) represent 'edges'.<br/>STIX defines many relationship types to link together SDOs and SCOs. These relationships are contained in the 'Relationships' table under each SDO and SCO definition. Relationship types defined in the specification <b>SHOULD</b> be used to ensure consistency. An example of a specification-defined relationship is that an indicator indicates a campaign. That relationship type is listed in the Relationships section of the Indicator SDO definition.<br/>STIX also allows relationships from any SDO or SCO to any SDO or SCO that have not been defined in this specification. These relationships MAY use the related-to relationship type or MAY use a user-defined relationship type. As an example, a user might want to link malware directly to a tool. They can do so using related-to to say that the Malware is related to the Tool but not describe how, or they could use delivered-by (a user-defined name they determined) to indicate more detail.<br/>Note that some relationships in STIX may seem like 'shortcuts'. For example, an Indicator doesn't really detect a Campaign: it detects activity (Attack Patterns, Malware, Infrastructure, etc.) that are often used by that campaign. While some analysts might want all of the source data and think that shortcuts are misleading, in many cases it's helpful to provide just the key points (shortcuts) and leave out the low-level details. In other cases, the low-level analysis may not be known or sharable, while the high-level analysis is. For these reasons, relationships that might appear to be 'shortcuts' are not excluded from STIX.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "relationship_type": [ "required", "string" ],
+              "description": [ "optional", "string" ],
+              "source_ref": [ "required", "identifier:STIX-SDO-SCO" ],
+              "target_ref": [ "required", "identifier:STIX-SDO-SCO" ],
+              "start_time": [ "optional", "timestamp" ],
+              "stop_time": [ "optional", "timestamp" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition"
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "sighting",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_a795guqsap3r",
+         "description": "A Sighting denotes the belief that something in CTI (e.g., an indicator, malware, tool, threat actor, etc.) was seen. Sightings are used to track who and what are being targeted, how attacks are carried out, and to track trends in attack behavior.<br/>The Sighting relationship object is a special type of SRO; it is a relationship that contains extra properties not present on the Generic Relationship object. These extra properties are included to represent data specific to sighting relationships (e.g., count, representing how many times something was seen), but for other purposes a Sighting can be thought of as a Relationship with a name of 'sighting-of'. Sighting is captured as a relationship because you cannot have a sighting unless you have something that has been sighted. Sighting does not make sense without the relationship to what was sighted.<br/>Sighting relationships relate three aspects of the sighting:<br/>1) What was sighted, such as the Indicator, Malware, Campaign, or other SDO (sighting_of_ref)<br/>2) Who sighted it and/or where it was sighted, represented as an Identity (where_sighted_refs)<br/>3) What was actually seen on systems and networks, represented as Observed Data (observed_data_refs)<br/><br/>What was sighted is required; a sighting does not make sense unless you say what you saw. Who sighted it, where it was sighted, and what was actually seen are optional. In many cases it is not necessary to provide that level of detail in order to provide value.<br/>Sightings are used whenever any SDO has been 'seen'. In some cases, the object creator wishes to convey very little information about the sighting; the details might be sensitive, but the fact that they saw a malware instance or threat actor could still be very useful. In other cases, providing the details may be helpful or even necessary; saying exactly which of the 1000 IP addresses in an indicator were sighted is helpful when tracking which of those IPs is still malicious.<br/>Sighting is distinct from Observed Data in that Sighting is an intelligence assertion ('I saw this threat actor') while Observed Data is simply information ('I saw this file'). When you combine them by including the linked Observed Data (observed_data_refs) from a Sighting, you can say 'I saw this file, and that makes me think I saw this threat actor'.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "spec_version": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "created": [ "required", "timestamp" ],
+              "modified": [ "required", "timestamp" ],
+              "created_by_ref": [ "optional", "identifier:SDO:identity" ],
+              "revoked": [ "optional", "boolean" ],
+              "labels": [ "optional", "list:string" ],
+              "confidence": [ "optional", "integer" ],
+              "lang": [ "optional", "string" ],
+              "external_references": [ "optional", "list:identifier:SCO:external-reference" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "extensions": [ "optional", "dictionary" ]
+           },
+         "specific_properties":
+           {
+              "description": [ "optional", "string" ],
+              "first_seen": [ "optional", "timestamp" ],
+              "last_seen": [ "optional", "timestamp" ],
+              "count": [ "optional", "integer" ],
+              "sighting_of_ref": [ "required", "identifier:STIX-SDO" ],
+              "observed_data_refs": [ "optional", "list:identifier:SDO:observed-data" ],
+              "where_sighted_refs": [ "optional", "list:identifier:SDO:identity,location" ],
+              "summary": [ "optional", "boolean" ]
+           },
+         "embedded_relationships":
+           {
+              "created_by_ref": "identifier:SDO:identity",
+              "object_marking_refs": "list:identifier:marking-definition",
+              "sighting_of_ref": "list:identifier:STIX-SDO",
+              "observed_data_refs": "list:identifier:SDO:observed-data",
+              "where_sighted_refs": "list:identifier:SDO:identity,location"
+           },
+         "common_relationships":
+           {
+           }
+     }
+     ],
+   "STIX Cyber-observable Objects": [
+     {
+         "type": "artifact",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_4jegwl6ojbes",
+         "description": "The Artifact object permits capturing an array of bytes (8-bits), as a base64-encoded string, or linking to a file-like payload.<br/>One of payload_bin or url <b>MUST</b> be provided. It is incumbent on object creators to ensure that the URL is accessible for downstream consumers.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "mime-type": [ "optional", "string" ],
+              "payload_bin": [ "optional", "binary" ],
+              "url": [ "optional", "string" ],
+              "hashes": [ "optional", "hashes:hash-algorithm-ov" ],
+              "encryption_algorithm ": [ "optional", "enum:encryption-algorithm-enum" ],
+              "decryption_key ": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "autonomous-system",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_27gux0aol9e3",
+         "description": "This object represents the properties of an Autonomous System (AS).",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "number": [ "required", "integer" ],
+              "name": [ "optional", "integer" ],
+              "rir": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "directory",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_lyvpga5hlw52",
+         "description": "The Directory object represents the properties common to a file system directory. ",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "path": [ "required", "string" ],
+              "path_enc": [ "optional", "string" ],
+              "ctime": [ "optional", "timestamp" ],
+              "mtime": [ "optional", "timestamp" ],
+              "atime": [ "optional", "timestamp" ],
+              "contains_refs": [ "optional", "list:identifier:SCO:file,directory" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "domain-name",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_prhhksbxbg87",
+         "description": "The Domain Name object represents the properties of a network domain name.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "value": [ "required", "string" ],
+              "resolves_to_refs": [ "optional", "list:identifier:SCO:ipv4-addr,ipv6-addr,domain-name" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+              "resolves-to": [ "domain-name", "ipv4-addr", "ipv6-addr" ]
+           }
+     },
+     {
+         "type": "email-addr",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_wmenahkvqmgj",
+         "description": "The Email Address object represents a single email address.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "value": [ "required", "string" ],
+              "display_name": [ "optional", "string" ],
+              "belongs_to_ref": [ "optional", "identifier:SCO:user-account" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "email-message",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_grboc7sq5514",
+         "description": "The Email Message object represents an instance of an email message, corresponding to the internet message format described in [RFC5322] and related RFCs.<br/>Header field values that have been encoded as described in section 2 of [RFC2047] MUST be decoded before inclusion in Email Message object properties. For example, this is some text <b>MUST</b> be used instead of =?iso-8859-1?q?this=20is=20some=20text?=. Any characters in the encoded value which cannot be decoded into Unicode SHOULD be replaced with the 'REPLACEMENT CHARACTER' (U+FFFD). If it is necessary to capture the header value as observed, this can be achieved by referencing an Artifact object through the raw_email_ref property.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "is_multipart ": [ "required", "boolean" ],
+              "date": [ "optional", "timestamp" ],
+              "content-type": [ "optional", "string" ],
+              "from_ref": [ "optional", "identifier:SCO:email-address" ],
+              "sender_ref": [ "optional", "identifier:SCO:email-address" ],
+              "to_refs": [ "optional", "identifier:SCO:email-address" ],
+              "cc_refs": [ "optional", "identifier:SCO:email-address" ],
+              "bcc_refs": [ "optional", "identifier:SCO:email-address" ],
+              "message_id": [ "optional", "string" ],
+              "subject": [ "optional", "string" ],
+              "received_lines": [ "optional", "list:string" ],
+              "body": [ "optional", "string" ],
+              "body_multipart": [ "optional", "list:identifier:SCO:email-mime-part-type" ],
+              "raw_email_ref": [ "optional", "identifier:SCO:artifact" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "email-mime-part-type",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_qpo5x7d8mefq",
+         "description": "Specifies one component of a multi-part email body.<br/>There is no property to capture the value of the 'Content-Transfer-Encoding' header field, since the body <b>MUST</b> be decoded before being represented in the body property.<br/>One of body OR body_raw_ref <b>MUST</b> be included.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "body": [ "optional", "string" ],
+              "body_raw_ref": [ "optional", "identifier:SCO:file,artifact" ],
+              "content_type": [ "optional", "string" ],
+              "content_disposition": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "file",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_99bl2dibcztv",
+         "description": "The File object represents the properties of a file. A File object <b>MUST</b> contain at least one of hashes or name.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "extensions": [ "optional", "dictionary:ntfs-ext,raster-image-ext,pdf-ext,archive-ext,windows-pebinary-ext" ],
+              "hashes": [ "optional", "hashes:hash-algorithm-ov" ],
+              "size": [ "optional", "integer" ],
+              "name": [ "optional", "string" ],
+              "name_enc": [ "optional", "string" ],
+              "magic_number_hex": [ "optional", "hex" ],
+              "mime_type": [ "optional", "string" ],
+              "ctime": [ "optional", "timestamp" ],
+              "mtime": [ "optional", "timestamp" ],
+              "atime": [ "optional", "timestamp" ],
+              "parent_directory_ref": [ "optional", "identifier:SCO:directory" ],
+              "content_ref": [ "optional", "identifier:SCO:artifact" ],
+              "contains_refs": [ "optional", "list:identifier:STIX-SCO" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "archive-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_xi3g7dwaigs6",
+         "description": "The Archive File extension specifies a default extension for capturing properties specific to archive files. The key for this extension when used in the extensions dictionary <b>MUST</b> be archive-ext. Note that this predefined extension does not use the extension facility described in section 7.3.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "contains_refs": [ "required", "list:identifier:SCO:file,directory" ],
+              "comment": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "ntfs-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_o6cweepfrsci",
+         "description": "The NTFS file extension specifies a default extension for capturing properties specific to the storage of the file on the NTFS file system. The key for this extension when used in the extensions dictionary <b>MUST</b> be ntfs-ext. Note that this predefined extension does not use the extension facility described in section 7.3.<br/>An object using the NTFS File Extension <b>MUST</b> contain at least one property from this extension.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "sid": [ "optional", "string" ],
+              "alternate_data_streams": [ "optional", "list:identifier:SCO:alternate-data-stream-type" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "alternate-data-stream-type",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_8i2ts0xicqea",
+         "description": "The Alternate Data Stream type represents an NTFS alternate data stream.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "hashes": [ "optional", "hashes:hash-algorithm-ov" ],
+              "size": [ "optional", "integer" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "pdf-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_8xmpb2ghp9km",
+         "description": "The PDF file extension specifies a default extension for capturing properties specific to PDF files. The key for this extension when used in the extensions dictionary <b>MUST</b> be pdf-ext. Note that this predefined extension does not use the extension facility described in section 7.3.<br/>An object using the PDF File Extension MUST contain at least one property from this extension.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "version": [ "optional", "string" ],
+              "is_optimized": [ "optional", "boolean" ],
+              "document_info_dict": [ "optional", "dictionary" ],
+              "pdfid0 ": [ "optional", "string" ],
+              "pdfid1 ": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "raster-image-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_u5z7i2ox8w4x",
+         "description": "",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "image_height": [ "optional", "integer" ],
+              "image_width": [ "optional", "integer" ],
+              "bits_per_pixel": [ "optional", "integer" ],
+              "exif_tags": [ "optional", "dictionary" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "windows-pebinary-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_gg5zibddf9bs",
+         "description": "The Windows™ PE Binary File extension specifies a default extension for capturing properties specific to Windows portable executable (PE) files. The key for this extension when used in the extensions dictionary <b>MUST</b> be windows-pebinary-ext. Note that this predefined extension does not use the extension facility described in section 7.3.<br/>An object using the Windows(tm) PE Binary File Extension <b>MUST</b> contain at least one property other than the required pe_type property from this extension.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "pe_type": [ "required", "open-vocab:windows-pebinary-type-ov" ],
+              "imphash": [ "optional", "string" ],
+              "machine_hex": [ "optional", "hex" ],
+              "number_of_sections": [ "optional", "integer" ],
+              "time_date_stamp": [ "optional", "timestamp" ],
+              "pointer_to_symbol_table_hex": [ "optional", "hex" ],
+              "number_of_symbols": [ "optional", "integer" ],
+              "size_of_optional_header": [ "optional", "integer" ],
+              "characteristics_hex": [ "optional", "hex" ],
+              "file_header_hashes": [ "optional", "hashes:hash-algorithm-ov" ],
+              "optional_header": [ "optional", "identifier:SCO:windows-pe-optional-header-type" ],
+              "sections": [ "optional", "list:identifier:SCO:windows-pe-section-type" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "windows-pe-optional-header-type",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_29l09w731pzc",
+         "description": "The Windows PE Optional Header type represents the properties of the PE optional header. An object using the Windows PE Optional Header Type <b>MUST</b> contain at least one property from this type.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "magic_hex": [ "optional", "hex" ],
+              "major_linker_version": [ "optional", "integer" ],
+              "minor_linker_version": [ "optional", "integer" ],
+              "size_of_code": [ "optional", "integer" ],
+              "size_of_initialized_data": [ "optional", "integer" ],
+              "size_of_uninitialized_data": [ "optional", "integer" ],
+              "address_of_entry_point": [ "optional", "integer" ],
+              "base_of_code": [ "optional", "integer" ],
+              "base_of_data": [ "optional", "integer" ],
+              "image_base": [ "optional", "integer" ],
+              "section_alignment": [ "optional", "integer" ],
+              "file_alignment": [ "optional", "integer" ],
+              "major_os_version": [ "optional", "integer" ],
+              "minor_os_version": [ "optional", "integer" ],
+              "major_image_version": [ "optional", "integer" ],
+              "minor_image_version": [ "optional", "integer" ],
+              "major_subsystem_version": [ "optional", "integer" ],
+              "minor_subsystem_version": [ "optional", "integer" ],
+              "win32_version_value_hex": [ "optional", "hex" ],
+              "size_of_image": [ "optional", "integer" ],
+              "size_of_headers": [ "optional", "integer" ],
+              "checksum_hex": [ "optional", "hex" ],
+              "subsystem_hex": [ "optional", "hex" ],
+              "dll_characteristics_hex": [ "optional", "hex" ],
+              "size_of_stack_reserve": [ "optional", "integer" ],
+              "size_of_stack_commit": [ "optional", "integer" ],
+              "size_of_heap_reserve": [ "optional", "integer" ],
+              "size_of_heap_commit": [ "optional", "integer" ],
+              "loader_flags_hex": [ "optional", "hex" ],
+              "number_of_rva_and_sizes": [ "optional", "integer" ],
+              "hashes": [ "optional", "hashes:hash-algorithm-ov" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "windows-pe-section-type",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ioapwyd8oimw",
+         "description": "The Windows PE Section type specifies metadata about a PE file section.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "size": [ "optional", "integer" ],
+              "entropy": [ "optional", "float" ],
+              "hashes": [ "optional", "hashes:hash-algorithm-ov" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "ipv4-addr",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ki1ufj1ku8s0",
+         "description": "The IPv4 Address object represents one or more IPv4 addresses expressed using CIDR notation.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "type": [ "required", "string" ],
+              "value": [ "required", "string" ],
+              "resolves_to_refs": [ "optional", "list:identifier:SCO:mac-addr" ],
+              "belongs_to_refs": [ "optional", "list:identifier:SCO:autonomous-system" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+              "resolves-to": "mac-addr",
+              "belongs-to": "autonomous-system"
+           }
+     },
+     {
+         "type": "ipv6-addr",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oeggeryskriq",
+         "description": "The IPv4 Address object represents one or more IPv6 addresses expressed using CIDR notation.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "value": [ "required", "string" ],
+              "resolves_to_refs": [ "optional", "list:identifier:SCO:mac-addr" ],
+              "belongs_to_refs": [ "optional", "list:identifier:SCO:autonomous-system" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+              "resolves-to": "mac-addr",
+              "belongs-to": "autonomous-system"
+           }
+     },
+     {
+         "type": "mac-addr",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_f92nr9plf58y",
+         "description": "The MAC Address object represents a single Media Access Control (MAC) address.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "value": [ "required", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "mutex",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_84hwlkdmev1w",
+         "description": "The Mutex object represents the properties of a mutual exclusion (mutex) object.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "network-traffic",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_rgnc3w40xy",
+         "description": "The Network Traffic object represents arbitrary network traffic that originates from a source and is addressed to a destination. The network traffic <b>MAY</b> or <b>MAY NOT</b> constitute a valid unicast, multicast, or broadcast network connection. This <b>MAY</b> also include traffic that is not established, such as a SYN flood.<br/>To allow for use cases where a source or destination address may be sensitive and not suitable for sharing, such as addresses that are internal to an organization’s network, the source and destination properties (src_ref and dst_ref, respectively) are defined as optional in the properties table below. However, a Network Traffic object <b>MUST</b> contain the protocols property and at least one of the src_ref or dst_ref properties and <b>SHOULD</b> contain the src_port and dst_port properties. ",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "extensions": [ "optional", "dictionary:http-request-ext,tcp-ext,icmp-ext,socket-ext" ],
+              "start": [ "optional", "timestamp" ],
+              "end": [ "optional", "timestamp" ],
+              "is_active": [ "optional", "boolean" ],
+              "src_ref": [ "optional", "identifier:SCO:ipv4-addr,ipv6-addr,mac-addr,domain-name" ],
+              "dst_ref": [ "optional", "identifier:SCO:ipv4-addr,ipv6-addr,mac-addr,domain-name" ],
+              "src_port": [ "optional", "integer" ],
+              "dst_port": [ "optional", "integer" ],
+              "protocols": [ "required", "list:string" ],
+              "src_byte_count": [ "optional", "integer" ],
+              "dst_byte_count": [ "optional", "integer" ],
+              "src_packets": [ "optional", "integer" ],
+              "dst_packets": [ "optional", "integer" ],
+              "ipfix": [ "optional", "dictionary:integer,string,IPFIX-property" ],
+              "src_payload_ref": [ "optional", "identifier:SCO:artifact" ],
+              "dst_payload_ref": [ "optional", "identifier:SCO:artifact" ],
+              "encapsulates_refs": [ "optional", "list:identifier:SCO:network-traffic" ],
+              "encapsulated_by_ref": [ "optional", "identifier:SCO:network-traffic" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "http-request-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_b0e376hgtml8",
+         "description": "The HTTP request extension specifies a default extension for capturing network traffic properties specific to HTTP requests. The key for this extension when used in the extensions dictionary <b>MUST</b> be http-request-ext. Note that this predefined extension does not use the extension facility described in section 7.3. The corresponding protocol value for this extension is http.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "request_method": [ "required", "string" ],
+              "request_value": [ "required", "string" ],
+              "request_version": [ "optional", "string" ],
+              "request_header": [ "optional", "dictionary" ],
+              "message_body_length": [ "optional", "integer" ],
+              "message_body_data_ref": [ "optional", "identifier:SCO:artifact" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "icmp-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ozypx0lmkebv",
+         "description": "The ICMP extension specifies a default extension for capturing network traffic properties specific to ICMP. The key for this extension when used in the extensions dictionary <b>MUST</b> be icmp-ext. Note that this predefined extension does not use the extension facility described in section 7.3. The corresponding protocol value for this extension is icmp.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "icmp_type_hex": [ "required", "hex" ],
+              "icmp_code_hex": [ "required", "hex" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "socket-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_8jamupj9ubdv",
+         "description": "The Network Socket extension specifies a default extension for capturing network traffic properties associated with network sockets. The key for this extension when used in the extensions dictionary <b>MUST</b> be socket-ext. Note that this predefined extension does not use the extension facility described in section 7.3.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "address_family": [ "required", "enum:network-socket-address-family-enum" ],
+              "is_blocking": [ "optional", "boolean" ],
+              "is_listening": [ "optional", "boolean" ],
+              "options": [ "optional", "dictionary:integer" ],
+              "socket_type": [ "optional", "enum:network-socket-type-enum" ],
+              "socket_descriptor": [ "optional", "integer" ],
+              "socket_handle": [ "optional", "integer" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "tcp-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_k2njqio7f142",
+         "description": "The TCP extension specifies a default extension for capturing network traffic properties specific to TCP. The key for this extension when used in the extensions dictionary <b>MUST</b> be tcp-ext. Note that this predefined extension does not use the extension facility described in section 7.3. The corresponding protocol value for this extension is tcp.<br/>An object using the TCP Extension <b>MUST</b> contain at least one property from this extension.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "src_flags_hex": [ "optional", "hex" ],
+              "dst_flags_hex": [ "optional", "hex" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "process",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_hpppnm86a1jm",
+         "description": "The Process object represents common properties of an instance of a computer program as executed on an operating system. A Process object <b>MUST</b> contain at least one property (other than type) from this object (or one of its extensions).",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "extensions": [ "optional", "dictionary:windows-process-ext,windows-service-ext" ],
+              "is_hidden": [ "optional", "boolean" ],
+              "pid": [ "optional", "integer" ],
+              "created_time": [ "optional", "timestamp" ],
+              "cwd": [ "optional", "string" ],
+              "command_line": [ "optional", "string" ],
+              "environment_variables": [ "optional", "dictionary:string" ],
+              "opened_connection_refs": [ "optional", "list:identifier:SCO:network-traffic" ],
+              "creator_user_ref": [ "optional", "list:identifier:SCO:user-account" ],
+              "image_ref": [ "optional", "identifier:SCO:file" ],
+              "parent_ref": [ "optional", "identifier:SCO:process" ],
+              "child_refs": [ "optional", "list:identifier:SCO:process" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "windows-process-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oyegq07gjf5t",
+         "description": "The Windows Process extension specifies a default extension for capturing properties specific to Windows processes. The key for this extension when used in the extensions dictionary <b>MUST</b> be windows-process-ext. Note that this predefined extension does not use the extension facility described in section 7.3.<br/>An object using the Windows Process Extension <b>MUST</b> contain at least one property from this extension.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "aslr_enabled": [ "optional", "boolean" ],
+              "dep_enabled": [ "optional", "boolean" ],
+              "priority": [ "optional", "string" ],
+              "owner_sid": [ "optional", "string" ],
+              "window_title": [ "optional", "string" ],
+              "startup_info": [ "optional", "dictionary" ],
+              "integrity_level": [ "optional", "enum:windows-integrity-level-enum" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "windows-service-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_lbcvc2ahx1s0",
+         "description": "The Windows Service extension specifies a default extension for capturing properties specific to Windows services. The key for this extension when used in the extensions dictionary <b>MUST</b> be windows-service-ext. Note that this predefined extension does not use the extension facility described in section 7.3.<br/>As all properties of this extension are optional, at least one of the properties defined below <b>MUST</b> be included when using this extension.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "service_name": [ "optional", "string" ],
+              "descriptions": [ "optional", "list:string" ],
+              "display_name": [ "optional", "string" ],
+              "group_name": [ "optional", "string" ],
+              "start_type": [ "optional", "enum:windows-service-start-type-enum" ],
+              "service_dll_refs": [ "optional", "list:identifier:SCO:file" ],
+              "service_type": [ "optional", "enum:windows-service-type-enum" ],
+              "service_status": [ "optional", "enum:windows-service-status-enum" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "software",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_7rkyhtkdthok",
+         "description": "The Software object represents high-level properties associated with software, including software products.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "name": [ "required", "string" ],
+              "cpe": [ "optional", "string" ],
+              "swid": [ "optional", "string" ],
+              "languages": [ "optional", "list:string" ],
+              "vendor": [ "optional", "string" ],
+              "version": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "url",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ah3hict2dez0",
+         "description": "",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "value": [ "required", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "user-account",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_azo70vgj1vm2",
+         "description": "The User Account object represents an instance of any type of user account, including but not limited to operating system, device, messaging service, and social media platform accounts. As all properties of this object are optional, at least one of the properties defined below <b>MUST</b> be included when using this object.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "extensions": [ "optional", "dictionary" ],
+              "user_id": [ "optional", "string" ],
+              "credential": [ "optional", "string" ],
+              "account_login": [ "optional", "string" ],
+              "account_type": [ "optional", "open-vocab:account-type-ov" ],
+              "display_name": [ "optional", "string" ],
+              "is_service_account": [ "optional", "boolean" ],
+              "is_privileged": [ "optional", "boolean" ],
+              "can_escalate_privs": [ "optional", "boolean" ],
+              "is_disabled": [ "optional", "boolean" ],
+              "account_created": [ "optional", "timestamp" ],
+              "account_expires": [ "optional", "timestamp" ],
+              "credential_last_changed": [ "optional", "timestamp" ],
+              "account_first_login": [ "optional", "timestamp" ],
+              "account_last_login": [ "optional", "timestamp" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "unix-account-ext",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_hodiamlggpw5",
+         "description": "The UNIX account extension specifies a default extension for capturing the additional information for an account on a UNIX system. The key for this extension when used in the extensions dictionary <b>MUST</b> be unix-account-ext. Note that this predefined extension does not use the extension facility described in section 7.3.<br/>An object using the UNIX Account Extension <b>MUST</b> contain at least one property from this extension.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "gid": [ "optional", "integer" ],
+              "groups": [ "optional", "list:string" ],
+              "home_dir": [ "optional", "string" ],
+              "shell": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "windows-registry-key",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_luvw8wjlfo3y",
+         "description": "The Registry Key object represents the properties of a Windows registry key. As all properties of this object are optional, at least one of the properties defined below <b>MUST</b> be included when using this object.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "key": [ "optional", "string" ],
+              "values": [ "optional", "list:identifier:SCO:windows-registry-value-type" ],
+              "modified_time": [ "optional", "timestamp" ],
+              "creator_user_ref": [ "optional", "identifier:SCO:user-account" ],
+              "number_of_subkeys": [ "optional", "integer" ]
+            },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "windows-registry-value-type",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_u7n4ndghs3qq",
+         "description": "The Windows Registry Value type captures the properties of a Windows Registry Key Value. As all properties of this type are optional, at least one of the properties defined below <b>MUST</b> be included when using this type.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "name": [ "optional", "string" ],
+              "data": [ "optional", "string" ],
+              "data_type": [ "optional", "enum:windows-registry-datatype-enum" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "x509-certificate",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_8abcy1o5x9w1",
+         "description": "The X.509 Certificate object represents the properties of an X.509 certificate, as defined by ITU recommendation X.509 [X.509]. An X.509 Certificate object <b>MUST</b> contain at least one object specific property (other than type) from this object.",
+         "common_properties":
+           {
+              "type": [ "required", "string" ],
+              "id": [ "required", "identifier" ],
+              "spec_version": [ "optional", "string" ],
+              "object_marking_refs": [ "optional", "list:identifier:marking-definition" ],
+              "granular_markings": [ "optional", "list:identifier:marking-definition" ],
+              "defanged": [ "optional", "boolean" ],
+              "extensions": [ "optional", "dictionary" ],
+              "created_by_ref": [ "not-applicable", "identifier:SDO:identity" ],
+              "revoked": [ "not-applicable", "boolean" ],
+              "labels": [ "not-applicable", "list:string" ],
+              "confidence": [ "not-applicable", "integer" ],
+              "lang": [ "not-applicable", "string" ],
+              "external_references": [ "not-applicable", "list:identifier:SCO:external-reference" ]
+           },
+         "specific_properties":
+           {
+              "is_self_signed": [ "optional", "boolean" ],
+              "hashes": [ "optional", "hashes:hash-algorithm-ov" ],
+              "version": [ "optional", "string" ],
+              "serial_number": [ "optional", "string" ],
+              "signature_algorithm": [ "optional", "string" ],
+              "issuer": [ "optional", "string" ],
+              "validity_not_before": [ "optional", "timestamp" ],
+              "validity_not_after": [ "optional", "timestamp" ],
+              "subject": [ "optional", "string" ],
+              "subject_public_key_algorithm": [ "optional", "string" ],
+              "subject_public_key_modulus": [ "optional", "string" ],
+              "subject_public_key_exponent": [ "optional", "integer" ],
+              "x509_v3_extensions": [ "optional", "identifier:SCO:x509-v3-extensions-type" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     },
+     {
+         "type": "x509-v3-extensions-type",
+         "documentation-url": "https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oudvonxzdlku",
+         "description": "The X.509 v3 Extensions type captures properties associated with X.509 v3 extensions, which serve as a mechanism for specifying additional information such as alternative subject names. An object using the X.509 v3 Extensions type MUST contain at least one property from this type.<br/>Note that the use of the term 'extensions' in this context refers to the X.509 v3 Extensions type and is not a STIX Cyber Observables extension. Therefore, it is a type that describes X.509 extensions.",
+         "common_properties":
+           {
+           },
+         "specific_properties":
+           {
+              "basic_constraints": [ "optional", "string" ],
+              "name_constraints": [ "optional", "string" ],
+              "policy_constraints": [ "optional", "string" ],
+              "key_usage": [ "optional", "string" ],
+              "extended_key_usage": [ "optional", "string" ],
+              "subject_key_identifier": [ "optional", "string" ],
+              "authority_key_identifier": [ "optional", "string" ],
+              "subject_alternative_name": [ "optional", "string" ],
+              "issuer_alternative_name": [ "optional", "string" ],
+              "subject_directory_attributes": [ "optional", "string" ],
+              "crl_distribution_points": [ "optional", "string" ],
+              "inhibit_any_policy": [ "optional", "string" ],
+              "private_key_usage_period_not_before": [ "optional", "timestamp" ],
+              "private_key_usage_period_not_after": [ "optional", "timestamp" ],
+              "certificate_policies": [ "optional", "string" ],
+              "policy_mappings": [ "optional", "string" ]
+           },
+         "embedded_relationships":
+           {
+           },
+         "common_relationships":
+           {
+           }
+     }
+
+     ]
+}
