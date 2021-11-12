@@ -25,6 +25,6 @@ It uses two JSON files with the STIX&trade; specification for the parameters and
 
 # Researchers involved
 - Ricardo M. Czekster, Research Associate, School of Computing, Newcastle University
-- Roberto Metere, Research Associate, School of Computing, Newcastle University
+- Roberto Metere, Research Associate, School of Computing, Newcastle University, The Turing Institute
 - Charles Morisset, Senior Lecturer, School of Computing, Newcastle University
 
