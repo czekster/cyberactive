@@ -55,7 +55,7 @@ $json_data = json_decode($json_file, true);
 // get all keys from JSON
 $root_keys = array_keys($json_data);
 
-$spec_url = $json_data[$rvalue][$STIX_obj_type_id]["documentation-url"];
+$spec_url = ($STIX_obj_type_id != $STIX_TYPE_SBO) ? $json_data[$rvalue][$STIX_obj_type_id]["documentation-url"] : "#";
 ?>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -108,7 +108,7 @@ $str_image = checkRemoteFile($_SERVER['HTTP_HOST']."/".$app_name."/images/STIX/"
 <?php
 $REQ = 0;    // this indicates to retrieve the property's requirements (required,optional,etc) (look JSON file)
 $TYPE = 1;   // retrieve type, instead of value
-$keys = array_keys($json_data[$rvalue][$STIX_obj_type_id]['common_properties']);
+$keys = ($STIX_obj_type_id != $STIX_TYPE_SBO) ? array_keys($json_data[$rvalue][$STIX_obj_type_id]['common_properties']) : array();
 foreach ($keys as $key => $value) {
    $p_req = $json_data[$rvalue][$STIX_obj_type_id]['common_properties'][$value][$REQ];
    $p_type = $json_data[$rvalue][$STIX_obj_type_id]['common_properties'][$value][$TYPE];
@@ -183,7 +183,7 @@ foreach ($keys as $key => $value) {
           <th style="width:5%;">Type</th>
          </tr>
 <?php
-$keys = array_keys($json_data[$rvalue][$STIX_obj_type_id]['specific_properties']);
+$keys = ($STIX_obj_type_id != $STIX_TYPE_SBO) ? array_keys($json_data[$rvalue][$STIX_obj_type_id]['specific_properties']) : array();
 foreach ($keys as $key => $value) {
    $p_req = $json_data[$rvalue][$STIX_obj_type_id]['specific_properties'][$value][$REQ];
    $p_type = $json_data[$rvalue][$STIX_obj_type_id]['specific_properties'][$value][$TYPE];

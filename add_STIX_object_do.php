@@ -5,6 +5,7 @@ include_once('globals.php');
 global $STIX_TYPE_SDO;
 global $STIX_TYPE_SRO;
 global $STIX_TYPE_SCO;
+global $STIX_TYPE_SBO;
 
 if (isset($_SESSION['user']) || $name == "")
    $u = unserialize($_SESSION['user']);

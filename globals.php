@@ -1,16 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // GLOBAL VARS
-
-require_once('PDO_utilities.php');
-require_once('Profile.php');
-require_once('Property.php'); // remember to rename "Property-sample.php" to "Property.php" after changing the properties to your setting.
-require_once('STIXModel.php');
-require_once('STIXObject.php');
-require_once('TableRows.php');
-require_once('User.php');
-require_once('Utils.php');
-
-
 // GLOBAL CONSTANTS
 $LATEST_VERSION = "0.1 (26/Oct/21)";  // latest version
 $SESSION_TIMEOUT = 600; // in seconds (10 min = 600s)
@@ -20,10 +13,21 @@ $SPEC_VERSION = "2.1";  // STIX version to add to SDO/SRO/etc property
 $STIX_TYPE_SDO = 1;
 $STIX_TYPE_SRO = 2;
 $STIX_TYPE_SCO = 3;
+$STIX_TYPE_SBO = 4;
 
 // paging size
 $LIMIT = 10;
 
+// Include other files
+require_once('PDO_utilities.php');
+require_once('Profile.php');
+require_once('Property.php'); // remember to rename "Property-sample.php" to "Property.php" after changing the properties to your setting.
+require_once('STIXModel.php');
+require_once('STIXObject.php');
+include_once('ActiveBuildingModel.php');
+require_once('TableRows.php');
+require_once('User.php');
+require_once('Utils.php');
 
 // global variable properties, look 'Property.php'
 $properties = new Property();
@@ -51,14 +55,17 @@ function currentTime() {
 
 // discover proper 'STIX_obj_type_id' value
 function getSTIXObjectTypeId($root_keys, $json_data, $STIX_obj_type) {
-   foreach ($root_keys as $rkey => $rvalue) {
-      $c_count = count($json_data[$rvalue]);
-      for ($i = 0; $i < $c_count; $i++) {
-         $obj_type = $json_data[$rvalue][$i]["type"];
-         if ($obj_type == $STIX_obj_type)
-            return $i;
-      }
-   }
+  global $STIX_TYPE_SBO;
+  
+  foreach ($root_keys as $rkey => $rvalue) {
+    $c_count = count($json_data[$rvalue]);
+    for ($i = 0; $i < $c_count; $i++) {
+      $obj_type = $json_data[$rvalue][$i]["type"];
+      if ($obj_type == $STIX_obj_type)
+        return $i;
+    }
+  }
+  return $STIX_TYPE_SBO;
 }
 
 /**

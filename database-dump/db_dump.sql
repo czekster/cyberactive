@@ -120,7 +120,7 @@ CREATE TABLE `stix_types` (
 
 LOCK TABLES `stix_types` WRITE;
 /*!40000 ALTER TABLE `stix_types` DISABLE KEYS */;
-INSERT INTO `stix_types` VALUES (1,'SDO','STIX Domain Objects'),(2,'SRO','STIX Relationship Objects'),(3,'SCO','STIX Cyber-observable Objects');
+INSERT INTO `stix_types` VALUES (1,'SDO','STIX Domain Objects'),(2,'SRO','STIX Relationship Objects'),(3,'SCO','STIX Cyber-observable Objects'),(4,'SBO','STIX Bundle Object');
 /*!40000 ALTER TABLE `stix_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
