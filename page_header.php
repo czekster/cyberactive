@@ -13,6 +13,14 @@ if (isset($_SESSION['user']))
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/png" href="images/favicon-32-32.png">
+<link rel="stylesheet" type="text/css" href="stix-visualizer.css" />
+<script src="require.js" data-main="stix-visualizer"></script>
+<style>
+  .selected {
+    /* Drop-shadow SVG styling has to go here for compatibility reasons */
+    filter: url("#drop-shadow");
+  }
+</style>
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 .w3-sidebar {
