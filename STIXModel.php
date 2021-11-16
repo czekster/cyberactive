@@ -80,7 +80,7 @@ class STIXModel {
       } finally {
          // rollback transaction
          $conn = null;
-         return -1;
+         return $lastID;
       }
    }
 
