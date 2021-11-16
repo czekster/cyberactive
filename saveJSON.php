@@ -20,6 +20,10 @@ if ($u->hasPermissionOnModel($id_stix_model)) {
    $contents = $stix_model->fetchModelJSON();
    $filename = stripslashes(trim($stix_model->getName())).".json"; // remove slashes and spaces (trim)
    $filename = str_replace('/', '-', $filename); //remove backslashes as well
+   if (!file_exists("tmp/")) {
+      mkdir("tmp/");
+    }
+   touch("tmp/".$filename);
    file_put_contents("tmp/".$filename, $contents);
 
    if (file_exists("tmp/".$filename)) {
@@ -31,7 +35,7 @@ if ($u->hasPermissionOnModel($id_stix_model)) {
       header('Cache-Control: must-revalidate');
       header('Pragma: public');
       //header('Content-Length: ' . filesize($filename));
-      readfile($filename);
+      readfile("tmp/".$filename);
       exit;
    } else echo "File does not exist in the server";
 
