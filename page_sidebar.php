@@ -4,7 +4,7 @@
     <i class="fa fa-remove"></i>
   </a>
   <h4 class="w3-bar-item"><b>Menu</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="under_construction.php">Design view</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="designview.php">Model visualizer</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="dashboard.php">My dashboard</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="timeline.php">Analyse timeline</a>
   <a class="w3-bar-item w3-button w3-hover-black" href="shareCTI.php">Share intelligence</a>

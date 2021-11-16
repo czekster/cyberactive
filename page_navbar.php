@@ -4,6 +4,7 @@
    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
    <a href="index.php" class="w3-bar-item w3-button w3-theme-l1">Home</a>
    <a href="new_stix_model.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">New model</a>
+   <a href="new_stix_model.php?base=ab" class="w3-bar-item w3-button w3-hide-small w3-hover-white">New model for Active Building</a>
    <a href="links.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Links</a>
    <a href="contact.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
    <a href="help.php" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Help</a>
