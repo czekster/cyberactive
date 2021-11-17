@@ -76,4 +76,24 @@ hr.graySmall
    text-decoration: line-through;
 }
 
+table td, table td > form, table td > p {
+  text-align: center;
+}
+table td > p {
+  margin: 0;
+  font-size: small;
+}
+table td > p > span {
+  font-size: smaller;
+  color: gray;
+}
+table td > form > input[type='image'] {
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: transparent;
+}
+table td > form > input[type='image']:hover, table td > form > input[type='image']:focus {
+  border: 2px solid teal;
+  background-color: lightblue;
+}
 </style>
