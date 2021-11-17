@@ -1,5 +1,5 @@
 <div>
-    <h4 id="currently-visualized-title"></h4>
+    <h3 id="currently-visualized-title" class="w3-text-teal"></h3>
     <div id="canvas-container" class="hidden">
       <div id="canvas-wrapper">
         <svg id="canvas"></svg>
