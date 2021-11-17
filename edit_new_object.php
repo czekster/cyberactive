@@ -138,6 +138,19 @@ function writeDashboardObjects($title, $objs) {
   global $STIX_TYPE_SBO;
   global $indexedObjs;
   
+  // cz: had to repeat this here, because the 'edit object' feature stopped working
+   $id_stix_model = $_GET['id_stix_model'];
+   $stix_model = new STIXModel();
+   $stix_model->get($id_stix_model);
+
+   // JSON manip
+   $json_file = file_get_contents("json/STIX2.1.json");
+   $json_data = json_decode($json_file, true);
+
+   // get all keys from JSON
+   $root_keys = array_keys($json_data);
+  // end cz comment
+
   $cols = 5;
 ?>
       <table class="w3-table w3-striped grid">
