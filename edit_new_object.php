@@ -137,13 +137,9 @@ function writeDashboardObjects($title, $objs) {
   global $STIX_TYPE_SCO;
   global $STIX_TYPE_SBO;
   global $indexedObjs;
-  
-  // JSON manip
-  $json_file = file_get_contents("json/STIX2.1.json");
-  $json_data = json_decode($json_file, true);
-
-  // get all keys from JSON
-  $root_keys = array_keys($json_data);
+  global $id_stix_model;
+  global $json_data;
+  global $root_keys;
 
   $cols = 5;
 ?>
