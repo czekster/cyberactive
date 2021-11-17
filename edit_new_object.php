@@ -2,6 +2,10 @@
 session_start();
 include 'session_valid.php';
 include_once ('globals.php');
+global $STIX_TYPE_SDO;
+global $STIX_TYPE_SRO;
+global $STIX_TYPE_SCO;
+global $STIX_TYPE_SBO;
 
 if (!isset($_SESSION['user']) || !isset($_GET['id_stix_model'])) {
    $_SESSION['message'] = "Expired or invalid session.";
@@ -86,6 +90,118 @@ if (isset($_SESSION['message']) && $_SESSION['message']) {
 <?php
 $model = new STIXModel();
 $objs = $model->getAllSTIXObjects($u->getIdUser(), $id_stix_model);
+
+// Organise objects
+$indexedObjs = array();
+$groups = array();
+$SDOs = array(); // Non-group SDOs
+$SROs = array();
+$SCOs = array();
+$SBOs = array();
+foreach ($objs as $obj) {
+  // So that all can be retrieved by their uuid
+  $indexedObjs = array_merge($indexedObjs, [ $obj['uuid'] => $obj ]);
+  
+  // Grouping
+  $type = explode("--", $obj['uuid'])[0];
+  if ($type == "grouping") {
+    array_push($groups, $obj);
+    continue;
+  }
+  
+  // By STIX type
+  $STIX_type = $obj['id_stix_type'];
+  switch($STIX_type) {
+    case $STIX_TYPE_SDO:
+      array_push($SDOs, $obj);
+      break;
+      
+    case $STIX_TYPE_SRO:
+      array_push($SROs, $obj);
+      break;
+      
+    case $STIX_TYPE_SCO:
+      array_push($SCOs, $obj);
+      break;
+      
+    case $STIX_TYPE_SBO:
+    default:
+      array_push($SBOs, $obj);
+      break;
+  }
+}
+
+function writeDashboardObjects($title, $objs) {
+  global $STIX_TYPE_SDO;
+  global $STIX_TYPE_SRO;
+  global $STIX_TYPE_SCO;
+  global $STIX_TYPE_SBO;
+  global $indexedObjs;
+  
+  $cols = 5;
+?>
+      <table class="w3-table w3-striped">
+        <tr><th class="w3-teal" colspan="<?php echo $cols; ?>"><?php echo $title; ?></th></tr>
+       <tr>
+<?php
+  $counter = 1;
+  $cols = 5;
+  foreach ($objs as $obj) {
+    $id_stix_object = $obj['id_stix_object'];
+    $uuid = explode("--", $obj['uuid']);
+    $rvalue = $obj['description']; //TODO: break by rvalue: show the SDO, then SCO, then SRO ?
+    $STIX_obj_type = $uuid[0];
+    $name = $obj['name'];
+    // test if image exists on folder (look 'globals.php')
+    $app_name= ($_SERVER['HTTP_HOST'] == "localhost" ? "cyberactive" : "");
+    $str_image = checkRemoteFile($_SERVER['HTTP_HOST']."/".$app_name."/images/STIX/".$STIX_obj_type.".png")==1 ? $STIX_obj_type.".png" : "none.png";
+  ?>
+          <td align="center" valign="top">
+            <form class="hover-trigger" action="edit_STIX_object.php" method="GET" id="<?php echo $obj['uuid']; ?>">
+            <input type="hidden" name="id_stix_model" value="<?php echo $id_stix_model; ?>">
+            <input type="hidden" name="id_stix_object" value="<?php echo $id_stix_object; ?>">
+            <input type="hidden" name="STIX_obj_type" value="<?php echo $STIX_obj_type; ?>">
+            <input type="hidden" name="STIX_obj_type_id" value="<?php echo getSTIXObjectTypeId($root_keys, $json_data, $STIX_obj_type); ?>">
+            <input type="hidden" name="rvalue" value="<?php echo $rvalue; ?>">
+            <input type="hidden" name="s" value="0">
+            <input type="image" src="images/STIX/<?php echo $str_image; ?>">
+            </form>
+            <p>
+<?php
+  switch($obj['id_stix_type']) {
+    case $STIX_TYPE_SRO:
+      $json = json_decode($obj['json'], true);
+      $name = $json['relationship_type'];
+      $from = $indexedObjs[$json['source_ref']]['name'];
+      $to   = $indexedObjs[$json['target_ref']]['name'];
+      echo "$name<br /><span>$from</span><br />↓<br /><span>$to</span>";
+      break;
+      
+    case $STIX_TYPE_SDO:
+    case $STIX_TYPE_SCO:
+    case $STIX_TYPE_SBO:
+    default:
+      echo $name;
+      break;
+  }
+?>
+            </p>
+          </td>
+  <?php
+    if ($counter++ % 5 == 0) {
+  ?>
+            </tr>
+            <tr>
+  <?php
+    }
+  }
+?>
+       </tr>
+      </table>
+<?php
+} // end function writeDashboardObjects
+
+
 ?>
     <div class="w3-container w3-teal">
      <h5>This model has <?php echo count($objs) == 0 ? "no objects" : (count($objs) == 1 ? "1 object" : count($objs)." objects"); ?>.</h5>
@@ -93,43 +209,13 @@ $objs = $model->getAllSTIXObjects($u->getIdUser(), $id_stix_model);
     <div class="w3-panel w3-cell-middle"><?php echo count($objs) == 0 ? "<p>Choose a STIX&trade; object below and click on 'Add to my model'.</p>" : ""; ?></div>
 
      <div class="w3-panel">
-      <table border="0">
-       <tr>
 <?php
-$counter = 1;
-foreach ($objs as $objects) {
-   $id_stix_object = $objects['id_stix_object'];
-   $uuid = explode("--", $objects['uuid']);
-   $rvalue = $objects['description']; //TODO: break by rvalue: show the SDO, then SCO, then SRO ?
-   $STIX_obj_type = $uuid[0];
-   // test if image exists on folder (look 'globals.php')
-   $app_name= ($_SERVER['HTTP_HOST'] == "localhost" ? "cyberactive" : "");
-   $str_image = checkRemoteFile($_SERVER['HTTP_HOST']."/".$app_name."/images/STIX/".$STIX_obj_type.".png")==1 ? $STIX_obj_type.".png" : "none.png";
-?>
-        <td align="center" valign="top">
-          <form action="edit_STIX_object.php" method="GET">
-           <input type="hidden" name="id_stix_model" value="<?php echo $id_stix_model; ?>">
-           <input type="hidden" name="id_stix_object" value="<?php echo $id_stix_object; ?>">
-           <input type="hidden" name="STIX_obj_type" value="<?php echo $STIX_obj_type; ?>">
-           <input type="hidden" name="STIX_obj_type_id" value="<?php echo getSTIXObjectTypeId($root_keys, $json_data, $STIX_obj_type); ?>">
-           <input type="hidden" name="rvalue" value="<?php echo $rvalue; ?>">
-           <input type="hidden" name="s" value="0">
-           <input type="image" src="images/STIX/<?php echo $str_image; ?>">
-          </form>
-          <font style="font-size: 10px;"><?php echo $STIX_obj_type; ?></font>
-        </td>
-<?php
-   if ($counter++ % 5 == 0) {
-?>
-           </tr>
-           <tr>
-<?php
-   }
-}
-?>
-       </tr>
-      </table>
-<?php
+
+writeDashboardObjects("Contexts", $groups);
+writeDashboardObjects("Domain objects", $SDOs);
+writeDashboardObjects("Relationships", $SROs);
+writeDashboardObjects("Cyber-observable", $SCOs);
+
 if (count($objs)>0) {
 ?>
       <div class="w3-panel w3-right" style="font-size: 12px;">
