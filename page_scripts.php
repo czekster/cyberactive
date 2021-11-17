@@ -86,3 +86,4 @@ function validate_recover(f) {
 }
 
 </script>
+<script src="require.js" data-main="stix-visualizer"></script>

@@ -32,7 +32,7 @@ require(["domReady!", "stix2viz/stix2viz/stix2viz"], function (document, stix2vi
      * Resizes the canvas based on the size of the window
      * ******************************************************/
     function resizeCanvas() {
-      var cWidth = document.getElementById('legend').offsetLeft - 52;
+      var cWidth = 0; // document.getElementById('legend').offsetLeft - 52;
       var cHeight = window.innerHeight; // - document.getElementsByTagName('h1')[0].offsetHeight - 27;
       document.getElementById('canvas-wrapper').style.width = cWidth;
       canvas.style.width = cWidth;

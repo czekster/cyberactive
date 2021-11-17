@@ -14,7 +14,6 @@ if (isset($_SESSION['user']))
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/png" href="images/favicon-32-32.png">
 <link rel="stylesheet" type="text/css" href="stix-visualizer.css" />
-<script src="require.js" data-main="stix-visualizer"></script>
 <style>
   .selected {
     /* Drop-shadow SVG styling has to go here for compatibility reasons */
