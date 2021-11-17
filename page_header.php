@@ -76,6 +76,11 @@ hr.graySmall
    text-decoration: line-through;
 }
 
+.stix-icon-sm {
+  width: 24px;
+  height: 24px;
+  margin: 0px 3px;
+}
 table td, table td > form, table td > p {
   text-align: center;
 }

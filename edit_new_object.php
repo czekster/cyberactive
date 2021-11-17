@@ -184,7 +184,9 @@ function writeDashboardObjects($title, $objs) {
         $object_refs = $json['object_refs'];
         echo "$name<ul class='w3-ul'>";
         foreach ($object_refs as $o) {
-          echo "<li class='w3-padding-small'>".$indexedObjs[$o]['name']."</li>";
+          $STIX_obj_type = explode("--", $o)[0];
+          $img = checkRemoteFile($_SERVER['HTTP_HOST']."/".$app_name."/images/STIX/".$STIX_obj_type.".png")==1 ? $STIX_obj_type.".png" : "none.png";
+          echo "<li class='w3-padding-small'><img class='stix-icon-sm' src='images/STIX/$img' />".$indexedObjs[$o]['name']."</li>";
         }
         echo "</ul>";
       } else {
