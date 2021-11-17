@@ -174,10 +174,24 @@ function writeDashboardObjects($title, $objs) {
       $name = $json['relationship_type'];
       $from = $indexedObjs[$json['source_ref']]['name'];
       $to   = $indexedObjs[$json['target_ref']]['name'];
-      echo "$name<br /><span>$from</span><br />↓<br /><span>$to</span>";
+      echo "<span>$from</span><br />$name<br /><span>$to</span>";
       break;
       
     case $STIX_TYPE_SDO:
+      $type = explode("--", $obj['uuid'])[0];
+      if ($type == "grouping") {
+        $json = json_decode($obj['json'], true);
+        $object_refs = $json['object_refs'];
+        echo "$name<ul class='w3-ul'>";
+        foreach ($object_refs as $o) {
+          echo "<li class='w3-padding-small'>".$indexedObjs[$o]['name']."</li>";
+        }
+        echo "</ul>";
+      } else {
+        echo $name;
+      }
+      break;
+      
     case $STIX_TYPE_SCO:
     case $STIX_TYPE_SBO:
     default:
