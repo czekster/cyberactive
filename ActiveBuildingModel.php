@@ -512,7 +512,15 @@ class ActiveBuildingModel extends STIXModel {
       , 'id' => $uuid
       , 'name' => $name
       , 'context' => "Management of $name"
-      , 'object_refs' => []
+      , 'object_refs' => [
+            $uuids["Main structure"]
+          , $uuids["Greenwich Building"]
+          , $uuids["EV Charger"]
+          , $uuids["Smart Meter at Greenwich"]
+          , $uuids["Solar Array at Greenwich"]
+          , $uuids["Solar array in 4th floor"]
+          , $uuids["Windows vulnerability 1"]
+        ]
     ), JSON_PRETTY_PRINT), $this->id_stix_model);
     $uuids = array_merge($uuids, [ $name => $uuid ]);
 
@@ -523,7 +531,12 @@ class ActiveBuildingModel extends STIXModel {
       , 'id' => $uuid
       , 'name' => $name
       , 'context' => "Management of $name"
-      , 'object_refs' => []
+      , 'object_refs' => [
+            $uuids["Auxiliary structure"]
+          , $uuids["Woolwich Building"]
+          , $uuids["Solar Array at Woolwich"]
+          , $uuids["Smart Meter at Woolwich"]
+        ]
     ), JSON_PRETTY_PRINT), $this->id_stix_model);
     $uuids = array_merge($uuids, [ $name => $uuid ]);
   }
