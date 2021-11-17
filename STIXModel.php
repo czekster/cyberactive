@@ -115,7 +115,7 @@ class STIXModel {
    function getAllSTIXObjects($id_user, $id_stix_model) {
       global $properties;
 
-      $sql = "SELECT so.id_stix_object, so.uuid, st.description,so.json ".
+      $sql = "SELECT so.id_stix_object, so.id_stix_type, so.uuid, so.name, st.description, so.json ".
              "FROM stix_objects so, users_stix_models usm, stix_models sm, models_objects mo, stix_types st, users u, profiles p ".
              "WHERE sm.id_stix_model=usm.id_stix_model AND ".
              "	  mo.id_stix_model=sm.id_stix_model AND ".
