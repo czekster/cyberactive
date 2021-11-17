@@ -140,7 +140,7 @@ function writeDashboardObjects($title, $objs) {
   
   $cols = 5;
 ?>
-      <table class="w3-table w3-striped">
+      <table class="w3-table w3-striped grid">
         <tr><th class="w3-teal" colspan="<?php echo $cols; ?>"><?php echo $title; ?></th></tr>
        <tr>
 <?php
