@@ -41,7 +41,7 @@ if (!isset($_SESSION['email']) || (isset($_SESSION['email']) && $_SESSION['email
   <div class="w3-quarter w3-container">
     <h1 class="w3-text-teal">Cyber-A<font color="gray"><b>cti</b></font>VE</h1>
 
-    <form class="w3-container" method="POST" action="login.php" name="loginform" onSubmit="if(validateEmail(this.email.value)) hashPwd(this.passwd); else alert('Invalid e-mail address.'); ">
+    <form class="w3-container" method="POST" action="login.php" name="loginform" onSubmit="if(!validateEmail(this.email.value)) { alert('Invalid e-mail address.'); return false; } ">
      <label>E-mail:</label>
      <input class="w3-input w3-border" type="text" name="email">
      <label>Password:</label>

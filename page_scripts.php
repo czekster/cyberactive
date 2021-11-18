@@ -1,4 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script> <!-- for the hash function on pwd -->
 <script>
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");
@@ -32,15 +31,6 @@ function hideDiv(id) {
   }
 }
 
-// Creates a hash for the user password and submit it
-function hashPwd(obj) {
-  var hashObj = new jsSHA("SHA-512", "TEXT", {numRounds: 1});
-  hashObj.update(obj.value);
-  var hash = hashObj.getHash("HEX");
-  obj.value = hash;
-  <!--alert(obj.value);-->
-}
-
 // Adheres to RFC822
 function validateEmail(email) {
   var sQtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
@@ -71,8 +61,6 @@ function validate(f) {
       alert('Passwords do not match.');
       return 0;
    } else {
-      hashPwd(f.passwd);
-      hashPwd(f.passwd2);
       return 1;
    }
 }

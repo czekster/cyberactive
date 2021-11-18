@@ -3,7 +3,7 @@ session_start();
 
 include_once('globals.php');
 $email = $_POST['email'];
-$pass = $_POST['passwd'];
+$pass = hash('sha512', $_POST['passwd']);
 
 $myUser = new User();
 $id = $myUser->login($email, $pass);
