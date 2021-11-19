@@ -21,7 +21,9 @@ $LIMIT = 10;
 // Include other files
 require_once('PDO_utilities.php');
 require_once('Profile.php');
-require_once('Property.php'); // remember to rename "Property-sample.php" to "Property.php" after changing the properties to your setting.
+if(!@include_once('Property.php')) { // remember to rename "Property-sample.php" to "Property.php" after changing the properties to your setting.
+  require_once('../Property.php'); // Try to find this file elsewhere (this is due to a very bad IT management -- sorry)
+}
 require_once('STIXModel.php');
 require_once('STIXObject.php');
 include_once('ActiveBuildingModel.php');
