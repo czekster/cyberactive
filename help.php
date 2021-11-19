@@ -50,10 +50,11 @@ include("page_sidebar.php");
              <p>
              - parameter space exploration, perceiving the type of each parameter and whether they are required or optional;<br/>
              - adherence to STIX&trade; version 2.1;<br/>
-             - standard web based application constructs: password is hashed on client-side and transmitted over the Internet, server-side testing for access, session handling and timeout after 10min of inactivity, <i>forget my password</i> (send e-mail link for change password);<br/>
+             - standard web based application constructs: server-side testing for access, session handling and timeout after 10min of inactivity, password recovery (send e-mail link for changing password);<br/>
              - STIX&trade; model creation and addition of objects (SDOs, SROs, and SCOs), integrated with original documentation;<br/>
              - Edit models and objects, retract objects (restrict access on specific objects);<br/>
              - Preview STIX&trade; model's JSON before sharing;<br/>
+             - STIX&trade; model visualisation;<br/>
              - Model validation, checking required parameters against user modelling choices;<br/>
              </p>
            </div>
