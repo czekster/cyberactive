@@ -145,6 +145,21 @@ class ActiveBuildingModel extends STIXModel {
     ), JSON_PRETTY_PRINT), $this->id_stix_model);
     $uuids = array_merge($uuids, [ $name => $uuid ]);
 
+    $type = "network-traffic";
+    $name = "Network Traffic";
+    $uuid = $this->generate_uuid($type);
+    (new STIXObject())->insert($STIX_TYPE_SCO, $name, $uid, $uuid, json_encode(array(
+        'type' => $type
+      , 'id' => $uuid
+      , 'start' => "2021-11-10T16:53:47Z"
+      , 'end' => "2021-11-12T16:53:47Z"
+      , 'protocols' => [
+            "HTTP"
+          , "HTTPS"
+        ]
+    ), JSON_PRETTY_PRINT), $this->id_stix_model);
+    $uuids = array_merge($uuids, [ $name => $uuid ]);
+
     $type = "observed-data";
     $name = "Observed Data";
     $uuid = $this->generate_uuid($type);
@@ -485,21 +500,6 @@ class ActiveBuildingModel extends STIXModel {
       , 'target_ref' => $uuids["viciUS-rootkit"]
       , 'start_time' => "2021-11-12T16:50:54Z"
       , 'stop_time' => "2021-11-12T16:50:54Z"
-    ), JSON_PRETTY_PRINT), $this->id_stix_model);
-    $uuids = array_merge($uuids, [ $name => $uuid ]);
-
-    $type = "network-traffic";
-    $name = "Network Traffic";
-    $uuid = $this->generate_uuid($type);
-    (new STIXObject())->insert($STIX_TYPE_SCO, $name, $uid, $uuid, json_encode(array(
-        'type' => $type
-      , 'id' => $uuid
-      , 'start' => "2021-11-10T16:53:47Z"
-      , 'end' => "2021-11-12T16:53:47Z"
-      , 'protocols' => [
-            "HTTP"
-          , "HTTPS"
-        ]
     ), JSON_PRETTY_PRINT), $this->id_stix_model);
     $uuids = array_merge($uuids, [ $name => $uuid ]);
     
