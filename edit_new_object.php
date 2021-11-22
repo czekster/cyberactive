@@ -157,7 +157,8 @@ function writeDashboardObjects($title, $objs) {
     $name = $obj['name'];
     // test if image exists on folder (look 'globals.php')
     $app_name= ($_SERVER['HTTP_HOST'] == "localhost" ? "cyberactive" : "");
-    $str_image = checkRemoteFile($_SERVER['HTTP_HOST']."/".$app_name."/images/STIX/".$STIX_obj_type.".png")==1 ? $STIX_obj_type.".png" : "none.png";
+    $str_image = $obj['id_stix_type'] == $STIX_TYPE_SCO ? "cyber-observable.png"
+      : (checkRemoteFile($_SERVER['HTTP_HOST']."/".$app_name."/images/STIX/".$STIX_obj_type.".png")==1 ? $STIX_obj_type.".png" : "none.png");
   ?>
           <td align="center" valign="top">
             <form class="hover-trigger" action="edit_STIX_object.php" method="GET" id="<?php echo $obj['uuid']; ?>">
