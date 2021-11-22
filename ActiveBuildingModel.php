@@ -172,7 +172,7 @@ class ActiveBuildingModel extends STIXModel {
     ), JSON_PRETTY_PRINT), $this->id_stix_model);
     $uuids = array_merge($uuids, [ $name => $uuid ]);
 
-    $type = "infrastructure";
+    $type = "malware";
     $name = "viciUS-rootkit";
     $uuid = $this->generate_uuid($type);
     (new STIXObject())->insert($STIX_TYPE_SDO, $name, $uid, $uuid, json_encode(array(
