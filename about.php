@@ -46,9 +46,14 @@ include("page_sidebar.php");
          <h3>People involved in the project</h3>
          </header>
            <div class="w3-container">
-             <p><a href="http://homepages.cs.ncl.ac.uk/ricardo.melo-czekster/" target="_blank">Ricardo M. Czekster</a>, <a href="https://www.ncl.ac.uk" target="_blank">Newcastle University</a>, <a href="https://www.ncl.ac.uk/computing/" target="_blank">School of Computing</a>.</p>
-             <p><a href="https://www.ncl.ac.uk/computing/research/srs/" target="_blank">Secure and Resilient Systems (SRS)</a> research group.</p>
+             <p>- <a href="http://homepages.cs.ncl.ac.uk/ricardo.melo-czekster/" target="_blank">Ricardo M. Czekster</a>, <a href="https://www.ncl.ac.uk" target="_blank">Newcastle University</a>, <a href="https://www.ncl.ac.uk/computing/" target="_blank">School of Computing</a>.</p>
              <p>E-mail: <font face="Courier new">ricardo.melo-czekster@ncl.ac.uk</font></p>
+             <p>- <a href="#" target="_blank">Roberto Metere</a>, <a href="https://www.ncl.ac.uk" target="_blank">Newcastle University</a>, <a href="https://www.ncl.ac.uk/computing/" target="_blank">School of Computing</a> and The Alan Turing Institute, London.</p>
+             <p>E-mail: <font face="Courier new">roberto.metere@ncl.ac.uk</font></p>
+             <p>- <a href="http://homepages.cs.ncl.ac.uk/ricardo.melo-czekster/" target="_blank">Charles Morisset</a>, <a href="https://www.ncl.ac.uk" target="_blank">Newcastle University</a>, <a href="https://www.ncl.ac.uk/computing/" target="_blank">School of Computing</a>.</p>
+             <p>E-mail: <font face="Courier new">charles.morisset@ncl.ac.uk</font></p>
+             <p/>
+             <p><a href="https://www.ncl.ac.uk/computing/research/srs/" target="_blank">Secure and Resilient Systems (SRS)</a> research group.</p>
            </div>
       </div> 
     </div>
