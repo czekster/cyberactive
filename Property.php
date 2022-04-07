@@ -2,22 +2,21 @@
 
 /**
    Change properties for your set up here.
-   *******Rename this file to "Property.php" after you're done.************
+   Rename this to "Property.php" after you're done.
 */
 class Property {
-   // basic properties
    private $appName = "cyberaCTIve";
-   private $serverName = "put server name here";
-   private $userName = "put username (DB) here";
-   private $password = "put password (DB) here";
-   private $dbName = " put database name here";
-   private $host = "put application host name here";
+   private $serverName = "mysql.performanceware.com.br";
+   private $userName = "performancewar04";
+   private $password = "yCewtN2021";
+   private $dbName = "performancewar04";
+   private $host = "https://cyberactive.performanceware.com.br/";
    // for emailing
-   private $smtp_host = "put SMTP host name here";
-   private $smtp_username = "put SMTP username here";
-   private $smtp_password = "put SMTP password here";
-   private $smtp_bcc = "put an email for BCC (blind carbon copy) here";
-   private $smtp_sender = "put a SMTP sender here";
+   private $smtp_host = "smtp.performanceware.com.br";
+   private $smtp_username = "active_admin@performanceware.com.br";
+   private $smtp_password = "EU9FWfxd5Sb9mKS";
+   private $smtp_bcc = "rczekster@gmail.com";
+   private $smtp_sender = "active_admin@performanceware.com.br";
    
    function getHost() {
       return $this->host;

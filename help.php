@@ -32,7 +32,7 @@ include("page_sidebar.php");
       <!-- first card -->
       <div class="w3-card-4">
          <header class="w3-container w3-teal">
-         <h3>Cyber-A<font color="white"><b>cti</b></font>VE's documents</h3>
+         <h3>cybera<font color="white"><b>CTI</b></font>ve's documents</h3>
          </header>
            <div class="w3-container">
              <p><a href="json/STIX2.1.json" target="_blank">STIX2.1.json</a>, created based on STIX&trade; specification</p>

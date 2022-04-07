@@ -33,7 +33,7 @@ class Utils {
       // sender
       $mail->Sender = $properties->getSMTPSender();
       $mail->From = $properties->getSMTPSender();
-      $mail->FromName = "Cyber-ActiVE Administrator";
+      $mail->FromName = "cyber-aCTIve Administrator";
       // recipient
       $mail->AddAddress($email); // to
       //$mail->AddAddress('recebe2@dominio.com.br'); // Define qual conta de email receberá a mensagem
