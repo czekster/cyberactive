@@ -24,7 +24,7 @@ It uses two JSON files with the STIX&trade; specification for the parameters and
   - update DBMS configuration to `Properties.php`
 
 # Researchers involved
-- Ricardo M. Czekster, Research Associate, School of Computing, Newcastle University
+- Ricardo M. Czekster, Lecturer in Computing, School of Informatics and Digital Engineering, Aston University
 - Roberto Metere, Research Associate, School of Computing, Newcastle University and The Alan Turing Institute, London
-- Charles Morisset, Senior Lecturer, School of Computing, Newcastle University
+- Charles Morisset, Senior Lecturer in Security, School of Computing, Newcastle University
 
