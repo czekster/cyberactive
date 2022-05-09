@@ -1,5 +1,5 @@
-# Cyber-A*cti*VE
-The Cyber-Attack Cyber Threat Intelligence Virtual Enviroment (Cyber-A**cti**VE) is a visual front-end to STIX&trade; models. The tool is integrated with [STIX's specification](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html) provided by [OASIS Open](https://www.oasis-open.org/).
+# cybera*CTI*ve
+The Cyber-Attack Cyber Threat Intelligence Virtual Enviroment (cybera**CTI**ve) is a visual front-end to STIX&trade; models. The tool is integrated with [STIX's specification](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html) provided by [OASIS Open](https://www.oasis-open.org/).
 A functional version of the tools is available at [this link](https://cyberactive.performanceware.com.br/).
 
 # Funding
