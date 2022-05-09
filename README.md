@@ -2,6 +2,9 @@
 The Cyber-Attack Cyber Threat Intelligence Virtual Enviroment (cybera**CTI**ve) is a visual front-end to STIX&trade; models. The tool is integrated with [STIX's specification](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html) provided by [OASIS Open](https://www.oasis-open.org/).
 A functional version of the tools is available at [this link](https://cyberactive.performanceware.com.br/).
 
+# Installing the tool
+Find information on file `_README.first` in this repository as well as requirements for running it stand-alone.
+
 # Funding
 This research is funded by the Industrial Strategy Challenge Fund and EPSRC, [EP/V012053/1](https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/V012053/1), through the [Active Building Centre - Research Programme (ABC RP)](https://abc-rp.com/).
 
