@@ -14,17 +14,13 @@ It uses two JSON files with the STIX&trade; specification for the parameters and
 1. [STIX2.1.json](https://github.com/czekster/cyberactive/blob/main/json/STIX2.1.json), created based on STIX&trade; specification
 2. [STIX2.1-vocabularies.json](https://github.com/czekster/cyberactive/blob/main/json/STIX2.1-vocabularies.json), also created based on STIX&trade; documentation on vocabularies, types, and identifiers.
   
-# Next steps
+# Requirements and initial steps
 - For this application you will require: PHP7+ , MySQL , Apache
   - optionally, you may want to install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
   - for MS-Windows, one could also employ [WAMP](https://www.wampserver.com/en/)
 - Rename `Properties-sample.php` to `Properties.php`
   - change to your settings
   - ALL properties must be set, for DBMS connection and for sendmail (to allow password retrieval)
-- Create a database (the suggested DBMS is MySQL, you may use what you want)
-  - set a schema (database name)
-  - dump tables into DBMS: look at file `database-dump/db_dump.sql`
-  - update DBMS configuration to `Properties.php`
 
 # Researchers involved
 - Ricardo M. Czekster, Lecturer in Computing, School of Informatics and Digital Engineering, Aston University
