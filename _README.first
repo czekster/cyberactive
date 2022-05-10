@@ -38,7 +38,7 @@ INSERT INTO `cyberactive_db`.`users` (`id_user`, `id_profile`, `email`, `passwd`
 - enter user: teste@teste.com
 - enter pwd: 11111
 
-10. That all.
+10. That's all.
 Enjoy.
 
 
