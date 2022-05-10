@@ -7,12 +7,12 @@
 class Property {
    // basic properties
    private $appName = "cyberaCTIve";
-   private $serverName = "put server name here";
+   private $serverName = "put server name (DB) here";
    private $userName = "put username (DB) here";
    private $password = "put password (DB) here";
-   private $dbName = " put database name here";
-   private $host = "put application host name here";
-   // for emailing
+   private $dbName = " put database name (DB) here";
+   private $host = "put application host name here (full path, e.g., http://localhost)";
+   // for emailing - if you are just testing the application locally, no need to add anything here (it is used in contact.php only)
    private $smtp_host = "put SMTP host name here";
    private $smtp_username = "put SMTP username here";
    private $smtp_password = "put SMTP password here";
