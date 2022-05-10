@@ -2,16 +2,16 @@
 
 Requirements:
 WAMP: Tested on Apache 2.4.46, MySQL 8.0.21, PHP 7.4.9 on Windows 10.
-MySQL Workbench 8.0 CE.
+MySQL Workbench 8.0 CE (optional).
 
 Steps to run cyberaCTIve locally:
-1. Unzip cyberactive-src.zip to c:/temp (folder ./cyberactive will be created)
+1. Unzip the source files to c:/temp (folder ./cyberactive will be created)
 2. Install WAMP server: https://www.wampserver.com/en/
 3. Left click on the WAMP server system icon (rightmost end of screen, little icon)
 - Go to Apache > Alias directories > Add an alias
    - you will have to name an alias (e.g., cyberactive), to a folder (e.g., c:/temp/cyberactive) containing the source
 4. Rename 'Property-sample.php' to 'Property.php'
-- Edit the following properties on 'Property.php':
+- Edit the following properties on 'Property.php' (that password is auto-generated):
 class Property {
    private $appName = "cyberaCTIve";
    private $serverName = "localhost";
