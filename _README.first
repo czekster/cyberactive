@@ -1,0 +1,46 @@
+-- cyberaCTIve tool --
+
+Requirements:
+WAMP: Tested on Apache 2.4.46, MySQL 8.0.21, PHP 7.4.9 on Windows 10.
+MySQL Workbench 8.0 CE.
+
+Steps to run cyberaCTIve locally:
+1. Unzip cyberactive-src.zip to c:/temp (folder ./cyberactive will be created)
+2. Install WAMP server: https://www.wampserver.com/en/
+3. Left click on the WAMP server system icon (rightmost end of screen, little icon)
+- Go to Apache > Alias directories > Add an alias
+   - you will have to name an alias (e.g., cyberactive), to a folder (e.g., c:/temp/cyberactive) containing the source
+4. Rename 'Property-sample.php' to 'Property.php'
+- Edit the following properties on 'Property.php':
+class Property {
+   private $appName = "cyberaCTIve";
+   private $serverName = "localhost";
+   private $userName = "cyberactive_user";
+   private $password = "yCewtW2022";
+   private $dbName = "cyberactive_db";
+   private $host = "http://localhost/";
+   ...
+}
+
+5. Install MySQL Workbench (download: https://dev.mysql.com/downloads/workbench/) and execute it
+6. Go to folder c:/temp/cyberactive/db and open file 'db_dump.sql'
+- Execute this script --> it will create the schema ('cyberactive_db') and all basic tables (with some inserts)
+7. On the script screen, type:
+-- Extra commands for creating user and setting put privileges
+CREATE USER 'cyberactive_user'@'%%' IDENTIFIED BY 'yCewtW2022';
+GRANT ALL PRIVILEGES ON *.* TO 'cyberactive_user'@'%%';
+FLUSH PRIVILEGES;
+
+8. Add an initial user to the database (id_profile=1, e.g., an administrator):
+INSERT INTO `cyberactive_db`.`users` (`id_user`, `id_profile`, `email`, `passwd`, `last_login`, `id_user_profile`) VALUES ('1', '1', 'teste@teste.com', '3627909a29c31381a071ec27f7c9ca97726182aed29a7ddd2e54353322cfb30abb9e3a6df2ac2c20fe23436311d678564d0c8d305930575f60e2d3d048184d79', now(), '1');
+
+9. Point your browser to: http://localhost/cyberactive/index.php
+- enter user: teste@teste.com
+- enter pwd: 11111
+
+10. That all.
+Enjoy.
+
+
+
+
