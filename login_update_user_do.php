@@ -4,8 +4,10 @@ session_start();
 include_once('globals.php');
 $email = $_POST['email'];
 $link = $_POST['link'];
-$passwd = $_POST['passwd'];
-$passwd2 = $_POST['passwd2'];
+$passwd = hash('sha512', $_POST['passwd']);
+$passwd2 = hash('sha512', $_POST['passwd2']);
+#$passwd = $_POST['passwd'];
+#$passwd2 = $_POST['passwd2'];
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $passwd == "" || $passwd2 == "" || $passwd != $passwd2) {
    $_SESSION['message'] = "Invalid email or empty or invalid password.";
