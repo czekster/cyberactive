@@ -111,11 +111,11 @@ foreach ($all_stix_models as $models) {
 <!-- pagination -->
 <?php
    $pages = $size_models/$LIMIT;
-   $current_page = $o_offset/$LIMIT;
+   $current_page = $m_offset/$LIMIT;
 ?>
     <div class="w3-bar w3-center">
 <?php
-for ($i = 0; $i < floor($pages); $i++) {   
+for ($i = 0; $i < floor($pages)+1; $i++) {   
    if ($i == 0) {
 ?>
      <a href="dashboard.php?m_offset=0" class="w3-button">&laquo;</a>
@@ -124,7 +124,7 @@ for ($i = 0; $i < floor($pages); $i++) {
 ?>
      <a href="dashboard.php?m_offset=<?php echo ($LIMIT*($i)); ?>" class="w3-button <?php echo $current_page == $i ? "w3-pale-green" : ""; ?>"><?php echo ($i+1); ?></a>
 <?php
-   if ($i == floor($pages)) {
+   if ($i == floor($pages)+1) {
 ?>
      <a href="dashboard.php?m_offset=<?php echo ($size_models-$LIMIT) > 0 ? ($size_models-$LIMIT) : 0; ?>" class="w3-button">&raquo;</a>
 <?php
